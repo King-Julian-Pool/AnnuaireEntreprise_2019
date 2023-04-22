@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataBaseObjectModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="ae72144f-ee22-4f98-b235-910c55e2ec2c" namespace="AnnuaireEntreprise_2019.Data.AnnuaireEntreprise_DEV" dataBaseShemaInfo="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" generateConnectionHelper="true" generateStoredProcedures="false" fieldNameCase="Unchanged" generateDefaultConstructors="false" useNameOf="true" connectionStringName="connectionString" createdInVersion="22.2.5.0" generateJsonSerializationContractResolver="false" generateServiceCollectionExtensions="false" lastModifiedInVersion="22.2.5.0" name="AnnuaireEntreprise_DEV" xmlns="http://schemas.microsoft.com/dsltools/ORMDataModel">
+  <classes>
+    <dataBaseObjectModelHasClasses Id="fc761f56-2b2a-44cb-a30e-2aed163a55a7">
+      <xpObject Id="2643613f-8929-4f4e-89bd-0f93f43cf408" name="Salarie" baseClass="XPObject" userFileName="Salarie" designerFileName="Salarie.Designer" className="Salarie" initialName="Salarie" persistent="Salarie" virtualName="Salarie">
+        <fields>
+          <generalXpObjectHasFields Id="bb783985-ec6e-493a-85ec-548895b0d26e">
+            <field Id="22b1f166-f2e3-4906-af59-15bd0a579172" name="Nom" initialName="Nom" persistent="Nom" virtualColumnType="String" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="4be79059-39d4-487d-8a1a-2a3b7efdc110">
+            <field Id="bb55a3c1-687b-4021-9557-143535306244" name="Prenom" initialName="Prenom" persistent="Prenom" virtualColumnType="String" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="8c9b280c-e143-47d4-ada2-5892496fea2d">
+            <field Id="2f2dc225-f276-47c3-b89d-21b2f95b7fe5" name="TelephoneFixe" initialName="TelephoneFixe" persistent="TelephoneFixe" virtualColumnType="String" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="6e16260e-fcb4-4750-bcec-a742d0a1eeb3">
+            <field Id="f3658772-cc9a-4c1e-83e9-e056401cb8d8" name="TelephonePortable" initialName="TelephonePortable" persistent="TelephonePortable" virtualColumnType="String" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="74b2a0cc-ead1-405d-9f66-e63c46f07164">
+            <field Id="18cf1d9a-65ba-410d-abd6-bbd1394697f2" name="Email" initialName="Email" persistent="Email" virtualColumnType="String" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="893e5a1b-13d8-4f12-a2d1-422136f99ac5">
+            <field Id="e984be2b-9a1e-404d-ac9f-ef3233c8796b" name="Service" columnType="Int32" initialName="Service" persistent="Service" virtualColumnType="Service" logicalType="Service" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="830df51c-adae-4391-b49e-6cd100dc3b74">
+            <field Id="11f16ec1-c289-4e60-bbdf-43cde69bfc39" name="Site" columnType="Int32" initialName="Site" persistent="Site" virtualColumnType="Site" logicalType="Site" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+        </fields>
+      </xpObject>
+    </dataBaseObjectModelHasClasses>
+    <dataBaseObjectModelHasClasses Id="7ca315cc-11e7-4885-9998-59102c155ccf">
+      <xpObject Id="5da5005c-e4b2-49c9-9d00-259e0b50ff96" name="Service" baseClass="XPObject" userFileName="Service" designerFileName="Service.Designer" className="Service" initialName="Service" persistent="Service" virtualName="Service">
+        <fields>
+          <generalXpObjectHasFields Id="72acaa07-7ca8-4a08-8cf8-8fcf9cacc2a5">
+            <field Id="ec8ea59e-8b85-4bc3-885d-8ac8d151f027" name="Nom" initialName="Nom" persistent="Nom" virtualColumnType="String" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+        </fields>
+        <saTargets>
+          <simpleAssociation Id="d586daf0-eb20-419e-9685-fdb7c8ca8165" sourceCollectionName="Salaries" name="SalarieReferencesService" targetFieldName="Service">
+            <xpObjectMoniker Id="2643613f-8929-4f4e-89bd-0f93f43cf408" />
+          </simpleAssociation>
+        </saTargets>
+        <collectionFields>
+          <xpObjectHasCollectionFields Id="59293618-954a-4db7-acbc-bc0876008d9f">
+            <collectionField Id="74ed6b21-d2de-471b-91fa-db380ac75522" name="Salaries" />
+          </xpObjectHasCollectionFields>
+        </collectionFields>
+      </xpObject>
+    </dataBaseObjectModelHasClasses>
+    <dataBaseObjectModelHasClasses Id="7dbb7ccc-21a2-4d47-b75b-eb0851538dc1">
+      <xpObject Id="30ad2f45-ddea-4320-89b8-7dc4f7bc9c4c" name="Site" baseClass="XPObject" userFileName="Site" designerFileName="Site.Designer" className="Site" initialName="Site" persistent="Site" virtualName="Site">
+        <fields>
+          <generalXpObjectHasFields Id="16b9cd21-a5ce-486a-aed6-56b2b754de79">
+            <field Id="9affbc96-700a-4f8a-8606-4478b685df33" name="Ville" initialName="Ville" persistent="Ville" virtualColumnType="String" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="1a43b508-10e5-4f14-a848-0e7561eb5d09">
+            <field Id="dbdc0ab3-601a-4a3a-aeb7-77a02768a416" name="IsChecked" columnType="Boolean" initialName="IsChecked" persistent="IsChecked" virtualColumnType="Boolean" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+        </fields>
+        <saTargets>
+          <simpleAssociation Id="d65473f7-e950-481c-be9b-21b3cf8ad2f9" sourceCollectionName="Salaries" name="SalarieReferencesSite" targetFieldName="Site">
+            <xpObjectMoniker Id="2643613f-8929-4f4e-89bd-0f93f43cf408" />
+          </simpleAssociation>
+        </saTargets>
+        <collectionFields>
+          <xpObjectHasCollectionFields Id="8df23148-be77-4d03-8404-253da6067f84">
+            <collectionField Id="14f33773-1dcf-44d1-b9df-7a8dca82bcb0" name="Salaries" />
+          </xpObjectHasCollectionFields>
+        </collectionFields>
+      </xpObject>
+    </dataBaseObjectModelHasClasses>
+  </classes>
+</dataBaseObjectModel>
