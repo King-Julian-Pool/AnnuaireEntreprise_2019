@@ -1,5 +1,6 @@
 ﻿using Data;
 using DevExpress.Data.Filtering;
+using DevExpress.Xpo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,16 +15,65 @@ namespace AnnuaireEntreprise_2019
 {
     public partial class MainForm : Form
     {
+        XPCollection<Salarie> Salaries;
+        XPCollection<Site> Sites;
+        XPCollection<Service> Services;
+        public Control[] FormControls;
+
+        private Salarie _salarie;
+        public Salarie Salarie
+        {
+            get => _salarie;
+            set
+            {
+                ClearDataBindings();
+
+                _salarie = value;
+
+                if (_salarie != null)
+                {
+                    this.InitDataBindings();
+                }
+            }
+        }
         public MainForm()
         {
             InitializeComponent();
 
-            ((ListBox)this.checkedListBox_Site).DataSource = this.xpCollection_Site;
+            this.dataGridView_Salarie.AutoGenerateColumns = false;
+
+            Salaries = new XPCollection<Salarie>(this.session);
+            this.dataGridView_Salarie.DataSource = Salaries;
+
+            this.xpCollection_Salarie.Dispose();
+
+            Sites = new XPCollection<Site>(this.session);
+            ((ListBox)this.checkedListBox_Site).DataSource = Sites;
             ((ListBox)this.checkedListBox_Site).DisplayMember = "Ville";
 
-            ((ListBox)this.checkedListBox_Service).DataSource = this.xpCollection_Service;
+            Services = new XPCollection<Service>(this.session);
+            ((ListBox)this.checkedListBox_Service).DataSource = Services;
             ((ListBox)this.checkedListBox_Service).DisplayMember = "Nom";
 
+
+            
+            this.comboBox_Site.DataSource = this.xpView_Site;
+            this.comboBox_Site.DisplayMember = "Ville";
+            this.comboBox_Site.ValueMember = "Oid";
+
+            this.comboBox_Service.DataSource = this.xpCollection_Service;
+            this.comboBox_Service.DisplayMember = "Nom";
+            this.comboBox_Service.ValueMember = "Oid";
+
+            this.FormControls = new Control[] {
+                this.textBox_Nom,
+                this.textBox_Prenom,
+                this.textBox_TelephoneFixe,
+                this.textBox_TelephonePortable,
+                this.textBox_Email,
+                this.comboBox_Site,
+                this.comboBox_Service
+            };
         }
 
         private void button_Click(object sender, EventArgs e)
@@ -49,12 +99,12 @@ namespace AnnuaireEntreprise_2019
                     case "button_ReinitialiserFiltre":
                         ReinitialiserFiltre();
                         break;
-                    //case "button_NouveauSite":
-                    //    NouveauSite();
-                    //    break;
-                    //case "button_SupprimerSite":
-                    //    SupprimerSite();
-                    //    break;
+                        //case "button_NouveauSite":
+                        //    NouveauSite();
+                        //    break;
+                        //case "button_SupprimerSite":
+                        //    SupprimerSite();
+                        //    break;
                 }
             }
         }
@@ -64,10 +114,10 @@ namespace AnnuaireEntreprise_2019
             Salarie salarie = new Salarie(this.session);
 
             salarie.Save();
-            
-            this.xpCollection_Salarie.Reload();
 
-            this.dataGridView_Salarie.Rows[this.xpCollection_Salarie.IndexOf(salarie)].Selected = true;
+            this.Salaries.Reload();
+
+            this.dataGridView_Salarie.Rows[this.Salaries.IndexOf(salarie)].Selected = true;
         }
 
         private void SupprimerSalarie()
@@ -84,7 +134,7 @@ namespace AnnuaireEntreprise_2019
                     {
                         row.Dispose();
                         salarie.Delete();
-                        this.xpCollection_Salarie.Reload();
+                        this.Salaries.Reload();
                     }
                 }
             }
@@ -92,113 +142,108 @@ namespace AnnuaireEntreprise_2019
 
         private void SauvegarderSalarie()
         {
-            //if (dataGridView_Salarie.SelectedRows.Count > 0)
-            //{
-            //    DataGridViewRow row = dataGridView_Salarie.SelectedRows[0];
+            if (dataGridView_Salarie.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridView_Salarie.SelectedRows[0];
 
-            //    if (row != null)
-            //    {
-            //        Salarie salarie = row.DataBoundItem as Salarie;
+                if (row != null)
+                {
 
-            //        //Control[] controls = this.userControl_Salarie?.FormControls;
+                    if (this._salarie != null && this.FormControls != null)
+                    {
+                        foreach (Control control in this.FormControls)
+                        {
+                            if (control?.Tag != null && this._salarie != null)
+                            {
+                                string tag = (string)control.Tag;
 
+                                switch (tag)
+                                {
+                                    case nameof(Salarie.Nom):
+                                        this._salarie.Nom = control.Text;
+                                        break;
+                                    case nameof(Salarie.Prenom):
+                                        this._salarie.Prenom = control.Text;
+                                        break;
+                                    case nameof(Salarie.TelephoneFixe):
+                                        this._salarie.TelephoneFixe = control.Text;
+                                        break;
+                                    case nameof(Salarie.TelephonePortable):
+                                        this._salarie.TelephonePortable = control.Text;
+                                        break;
+                                    case nameof(Salarie.Email):
+                                        this._salarie.Email = control.Text;
+                                        break;
+                                    case nameof(Salarie.Site):
+                                        ComboBox comboBoxSite = (ComboBox)control;
 
-            //        if (salarie != null && controls != null)
-            //        {
-            //            foreach (Control control in controls)
-            //            {
-            //                if (control?.Tag != null && salarie != null)
-            //                {
-            //                    string tag = (string)control.Tag;
+                                        bool siteExist = false;
 
-            //                    switch (tag)
-            //                    {
-            //                        case nameof(Salarie.Nom):
-            //                            salarie.Nom = control.Text;
-            //                            break;
-            //                        case nameof(Salarie.Prenom):
-            //                            salarie.Prenom = control.Text;
-            //                            break;
-            //                        case nameof(Salarie.TelephoneFixe):
-            //                            salarie.TelephoneFixe = control.Text;
-            //                            break;
-            //                        case nameof(Salarie.TelephonePortable):
-            //                            salarie.TelephonePortable = control.Text;
-            //                            break;
-            //                        case nameof(Salarie.Email):
-            //                            salarie.Email = control.Text;
-            //                            break;
-            //                        case nameof(Salarie.Site):
-            //                            ComboBox comboBoxSite = (ComboBox)control;
+                                        if (comboBoxSite?.SelectedValue != null)
+                                        {
+                                            int? SiteOid = (int)comboBoxSite.SelectedValue;
 
-            //                            bool siteExist = false;
+                                            if (SiteOid != null && SiteOid > 0)
+                                            {
+                                                this._salarie.Site = this.Sites.FirstOrDefault(s => s.Oid == SiteOid);
+                                                siteExist = true;
+                                            }
+                                        }
 
-            //                            if (comboBoxSite?.SelectedValue != null)
-            //                            {
-            //                                int? SiteOid = (int)comboBoxSite.SelectedValue;
+                                        if (!siteExist)
+                                        {
+                                            this._salarie.Site = null;
+                                        }
 
-            //                                if (SiteOid != null && SiteOid > 0)
-            //                                {
-            //                                    salarie.Site = this.Sites.FirstOrDefault(s => s.Oid == SiteOid);
-            //                                    siteExist = true;
-            //                                }
-            //                            }
+                                        break;
+                                    case nameof(Salarie.Service):
+                                        ComboBox comboBoxService = (ComboBox)control;
 
-            //                            if (!siteExist)
-            //                            {
-            //                                salarie.Site = null;
-            //                            }
+                                        bool serviceExist = false;
 
-            //                            break;
-            //                        case nameof(Salarie.Service):
-            //                            ComboBox comboBoxService = (ComboBox)control;
+                                        if (comboBoxService?.SelectedValue != null)
+                                        {
+                                            int? ServiceOid = (int)comboBoxService.SelectedValue;
 
-            //                            bool serviceExist = false;
+                                            if (ServiceOid != null && ServiceOid > 0)
+                                            {
+                                                this._salarie.Service = this.Services.FirstOrDefault(s => s.Oid == ServiceOid);
+                                                serviceExist = true;
+                                            }
+                                        }
 
-            //                            if (comboBoxService?.SelectedValue != null)
-            //                            {
-            //                                int? ServiceOid = (int)comboBoxService.SelectedValue;
+                                        if (!serviceExist)
+                                        {
+                                            this._salarie.Service = null;
+                                        }
 
-            //                                if (ServiceOid != null && ServiceOid > 0)
-            //                                {
-            //                                    salarie.Service = this.Services.FirstOrDefault(s => s.Oid == ServiceOid);
-            //                                    serviceExist = true;
-            //                                }
-            //                            }
+                                        break;
+                                }
+                            }
+                        }
 
-            //                            if (!serviceExist)
-            //                            {
-            //                                salarie.Service = null;
-            //                            }
-
-            //                            break;
-            //                    }
-            //                }
-            //            }
-
-            //            salarie.Save();
-            //            //this.xpCollection_Salarie.Reload();
-            //        }
-            //    }
-            //}
+                        this._salarie.Save();
+                    }
+                }
+            }
         }
 
         private void Annuler()
         {
-            //if (dataGridView_Salarie.SelectedRows.Count > 0)
-            //{
-            //    DataGridViewRow row = dataGridView_Salarie.SelectedRows[0];
+            if (dataGridView_Salarie.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridView_Salarie.SelectedRows[0];
 
-            //    if (row != null)
-            //    {
-            //        Salarie? salarie = row.DataBoundItem as Salarie;
+                if (row != null)
+                {
+                    Salarie salarie = row.DataBoundItem as Salarie;
 
-            //        if (salarie != null)
-            //        {
-            //            this.userControl_Salarie.Salarie = salarie;
-            //        }
-            //    }
-            //}
+                    if (salarie != null)
+                    {
+                        this.Salarie = salarie;
+                    }
+                }
+            }
         }
 
         private void ReinitialiserFiltre()
@@ -215,7 +260,7 @@ namespace AnnuaireEntreprise_2019
             {
                 if (site.IsChecked)
                 {
-                site.IsChecked = false;
+                    site.IsChecked = false;
                 }
             }
 
@@ -223,7 +268,7 @@ namespace AnnuaireEntreprise_2019
             {
                 if (service.IsChecked)
                 {
-                service.IsChecked = false;
+                    service.IsChecked = false;
                 }
             }
 
@@ -324,13 +369,91 @@ namespace AnnuaireEntreprise_2019
 
             var criteria = CriteriaOperator.And(NomPrenomOp, SiteOp, ServiceOp);
 
-            this.xpCollection_Salarie.Criteria = criteria;
+            this.Salaries.Criteria = criteria;
         }
 
         private void dataGridView_Salarie_SelectionChanged(object sender, EventArgs e)
         {
+            DataGridView dataGridView = (DataGridView)sender;
 
+            if (dataGridView != null && dataGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridView.SelectedRows[0];
+
+                if (row != null)
+                {
+                    Salarie salarie = row.DataBoundItem as Salarie;
+
+                    if (salarie != null)
+                    {
+                        this.Salarie = salarie;
+                    }
+                }
+            }
         }
 
+
+        private void ClearDataBindings()
+        {
+            if (this.FormControls != null)
+            {
+                foreach (Control control in this.FormControls)
+                {
+                    if (control.GetType() == typeof(TextBox))
+                    {
+                        control.Text = null;
+                    }
+                    else if (control.GetType() == typeof(ComboBox))
+                    {
+                        ((ComboBox)control).SelectedItem = null;
+                    }
+                }
+            }
+        }
+
+        private void InitDataBindings()
+        {
+            if (this.FormControls != null)
+            {
+                foreach (Control control in this.FormControls)
+                {
+                    if (control?.Tag != null && _salarie != null)
+                    {
+                        string tag = (string)control.Tag;
+
+                        switch (tag)
+                        {
+                            case nameof(Salarie.Nom):
+                                control.Text = _salarie.Nom;
+                                break;
+                            case nameof(Salarie.Prenom):
+                                control.Text = _salarie.Prenom;
+                                break;
+                            case nameof(Salarie.TelephoneFixe):
+                                control.Text = _salarie.TelephoneFixe;
+                                break;
+                            case nameof(Salarie.TelephonePortable):
+                                control.Text = _salarie.TelephonePortable;
+                                break;
+                            case nameof(Salarie.Email):
+                                control.Text = _salarie.Email;
+                                break;
+                            case nameof(Salarie.Site):
+                                if (_salarie.Site != null)
+                                {
+                                    ((ComboBox)control).SelectedValue = _salarie.Site.Oid;
+                                }
+                                break;
+                            case nameof(Salarie.Service):
+                                if (_salarie.Service != null)
+                                {
+                                    ((ComboBox)control).SelectedValue = _salarie.Service.Oid;
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

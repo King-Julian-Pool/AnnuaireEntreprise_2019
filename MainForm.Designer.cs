@@ -34,6 +34,7 @@ namespace AnnuaireEntreprise_2019
             this.tabPage_Salarie = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox_Filtre = new System.Windows.Forms.GroupBox();
+            this.button_ReinitialiserFiltre = new System.Windows.Forms.Button();
             this.checkedListBox_Service = new System.Windows.Forms.CheckedListBox();
             this.label_Service = new System.Windows.Forms.Label();
             this.checkedListBox_Site = new System.Windows.Forms.CheckedListBox();
@@ -42,43 +43,40 @@ namespace AnnuaireEntreprise_2019
             this.label_NomPrenom = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView_Salarie = new System.Windows.Forms.DataGridView();
-            this.session = new DevExpress.Xpo.Session(this.components);
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.button_AnnulerSalarie = new System.Windows.Forms.Button();
-            this.button_SauvegarderSalarie = new System.Windows.Forms.Button();
-            this.button_SupprimerSalarie = new System.Windows.Forms.Button();
-            this.button_NouveauSalarie = new System.Windows.Forms.Button();
-            this.tabPage_Site = new System.Windows.Forms.TabPage();
-            this.button_ReinitialiserFiltre = new System.Windows.Forms.Button();
             this.oidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telephoneFixeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telephonePortableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serviceKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serviceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.siteKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xpCollection_Salarie = new DevExpress.Xpo.XPCollection(this.components);
-            this.xpView_Site = new DevExpress.Xpo.XPView(this.components);
-            this.xpView_Service = new DevExpress.Xpo.XPView(this.components);
-            this.xpCollection_Site = new DevExpress.Xpo.XPCollection(this.components);
-            this.xpCollection_Service = new DevExpress.Xpo.XPCollection(this.components);
-            this.groupBox_Nom = new System.Windows.Forms.GroupBox();
-            this.textBox_Nom = new System.Windows.Forms.TextBox();
-            this.groupBox_Prenom = new System.Windows.Forms.GroupBox();
-            this.textBox_Prenom = new System.Windows.Forms.TextBox();
-            this.groupBox_TelephoneFixe = new System.Windows.Forms.GroupBox();
-            this.textBox__TelephoneFixe = new System.Windows.Forms.TextBox();
-            this.groupBox_TelephonePortable = new System.Windows.Forms.GroupBox();
-            this.textBox_TelephonePortable = new System.Windows.Forms.TextBox();
-            this.groupBox_Email = new System.Windows.Forms.GroupBox();
-            this.textBox_Email = new System.Windows.Forms.TextBox();
-            this.groupBox_Site = new System.Windows.Forms.GroupBox();
-            this.comboBox__Site = new System.Windows.Forms.ComboBox();
+            this.serviceKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox_Service = new System.Windows.Forms.GroupBox();
             this.comboBox_Service = new System.Windows.Forms.ComboBox();
+            this.groupBox_Site = new System.Windows.Forms.GroupBox();
+            this.comboBox_Site = new System.Windows.Forms.ComboBox();
+            this.groupBox_Email = new System.Windows.Forms.GroupBox();
+            this.textBox_Email = new System.Windows.Forms.TextBox();
+            this.groupBox_TelephonePortable = new System.Windows.Forms.GroupBox();
+            this.textBox_TelephonePortable = new System.Windows.Forms.TextBox();
+            this.groupBox_TelephoneFixe = new System.Windows.Forms.GroupBox();
+            this.textBox_TelephoneFixe = new System.Windows.Forms.TextBox();
+            this.groupBox_Prenom = new System.Windows.Forms.GroupBox();
+            this.textBox_Prenom = new System.Windows.Forms.TextBox();
+            this.groupBox_Nom = new System.Windows.Forms.GroupBox();
+            this.textBox_Nom = new System.Windows.Forms.TextBox();
+            this.button_AnnulerSalarie = new System.Windows.Forms.Button();
+            this.button_SauvegarderSalarie = new System.Windows.Forms.Button();
+            this.button_SupprimerSalarie = new System.Windows.Forms.Button();
+            this.button_NouveauSalarie = new System.Windows.Forms.Button();
+            this.tabPage_Site = new System.Windows.Forms.TabPage();
+            this.session = new DevExpress.Xpo.Session(this.components);
+            this.xpView_Site = new DevExpress.Xpo.XPView(this.components);
+            this.xpView_Service = new DevExpress.Xpo.XPView(this.components);
+            this.xpCollection_Service = new DevExpress.Xpo.XPCollection(this.components);
+            this.xpCollection_Site = new DevExpress.Xpo.XPCollection(this.components);
+            this.xpCollection_Salarie = new DevExpress.Xpo.XPCollection(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage_Salarie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -91,23 +89,23 @@ namespace AnnuaireEntreprise_2019
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Salarie)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.session)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Salarie)).BeginInit();
+            this.groupBox_Service.SuspendLayout();
+            this.groupBox_Site.SuspendLayout();
+            this.groupBox_Email.SuspendLayout();
+            this.groupBox_TelephonePortable.SuspendLayout();
+            this.groupBox_TelephoneFixe.SuspendLayout();
+            this.groupBox_Prenom.SuspendLayout();
+            this.groupBox_Nom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.session)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpView_Site)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpView_Service)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Site)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Service)).BeginInit();
-            this.groupBox_Nom.SuspendLayout();
-            this.groupBox_Prenom.SuspendLayout();
-            this.groupBox_TelephoneFixe.SuspendLayout();
-            this.groupBox_TelephonePortable.SuspendLayout();
-            this.groupBox_Email.SuspendLayout();
-            this.groupBox_Site.SuspendLayout();
-            this.groupBox_Service.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Site)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Salarie)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -169,6 +167,17 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Filtre.TabIndex = 0;
             this.groupBox_Filtre.TabStop = false;
             this.groupBox_Filtre.Text = "Filtres";
+            // 
+            // button_ReinitialiserFiltre
+            // 
+            this.button_ReinitialiserFiltre.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_ReinitialiserFiltre.Location = new System.Drawing.Point(3, 269);
+            this.button_ReinitialiserFiltre.Name = "button_ReinitialiserFiltre";
+            this.button_ReinitialiserFiltre.Size = new System.Drawing.Size(203, 23);
+            this.button_ReinitialiserFiltre.TabIndex = 6;
+            this.button_ReinitialiserFiltre.Text = "Réinitialiser";
+            this.button_ReinitialiserFiltre.UseVisualStyleBackColor = true;
+            this.button_ReinitialiserFiltre.Click += new System.EventHandler(this.button_Click);
             // 
             // checkedListBox_Service
             // 
@@ -253,7 +262,7 @@ namespace AnnuaireEntreprise_2019
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(1132, 576);
-            this.splitContainer2.SplitterDistance = 859;
+            this.splitContainer2.SplitterDistance = 835;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -262,7 +271,6 @@ namespace AnnuaireEntreprise_2019
             this.dataGridView_Salarie.AllowUserToAddRows = false;
             this.dataGridView_Salarie.AllowUserToDeleteRows = false;
             this.dataGridView_Salarie.AllowUserToOrderColumns = true;
-            this.dataGridView_Salarie.AutoGenerateColumns = false;
             this.dataGridView_Salarie.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Salarie.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.oidDataGridViewTextBoxColumn,
@@ -271,21 +279,92 @@ namespace AnnuaireEntreprise_2019
             this.telephoneFixeDataGridViewTextBoxColumn,
             this.telephonePortableDataGridViewTextBoxColumn,
             this.emailDataGridViewTextBoxColumn,
-            this.serviceKeyDataGridViewTextBoxColumn,
-            this.serviceDataGridViewTextBoxColumn,
             this.siteDataGridViewTextBoxColumn,
-            this.siteKeyDataGridViewTextBoxColumn});
-            this.dataGridView_Salarie.DataSource = this.xpCollection_Salarie;
+            this.serviceKeyDataGridViewTextBoxColumn});
             this.dataGridView_Salarie.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Salarie.Location = new System.Drawing.Point(0, 0);
             this.dataGridView_Salarie.MultiSelect = false;
             this.dataGridView_Salarie.Name = "dataGridView_Salarie";
+            this.dataGridView_Salarie.ReadOnly = true;
             this.dataGridView_Salarie.RowHeadersWidth = 51;
             this.dataGridView_Salarie.RowTemplate.Height = 24;
             this.dataGridView_Salarie.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Salarie.Size = new System.Drawing.Size(857, 574);
+            this.dataGridView_Salarie.Size = new System.Drawing.Size(833, 574);
             this.dataGridView_Salarie.TabIndex = 0;
             this.dataGridView_Salarie.SelectionChanged += new System.EventHandler(this.dataGridView_Salarie_SelectionChanged);
+            // 
+            // oidDataGridViewTextBoxColumn
+            // 
+            this.oidDataGridViewTextBoxColumn.DataPropertyName = "Oid";
+            this.oidDataGridViewTextBoxColumn.HeaderText = "Oid";
+            this.oidDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.oidDataGridViewTextBoxColumn.Name = "oidDataGridViewTextBoxColumn";
+            this.oidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.oidDataGridViewTextBoxColumn.Visible = false;
+            this.oidDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "Nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom";
+            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // prenomDataGridViewTextBoxColumn
+            // 
+            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "Prenom";
+            this.prenomDataGridViewTextBoxColumn.HeaderText = "Prenom";
+            this.prenomDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
+            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.prenomDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // telephoneFixeDataGridViewTextBoxColumn
+            // 
+            this.telephoneFixeDataGridViewTextBoxColumn.DataPropertyName = "TelephoneFixe";
+            this.telephoneFixeDataGridViewTextBoxColumn.HeaderText = "TelephoneFixe";
+            this.telephoneFixeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.telephoneFixeDataGridViewTextBoxColumn.Name = "telephoneFixeDataGridViewTextBoxColumn";
+            this.telephoneFixeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.telephoneFixeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // telephonePortableDataGridViewTextBoxColumn
+            // 
+            this.telephonePortableDataGridViewTextBoxColumn.DataPropertyName = "TelephonePortable";
+            this.telephonePortableDataGridViewTextBoxColumn.HeaderText = "TelephonePortable";
+            this.telephonePortableDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.telephonePortableDataGridViewTextBoxColumn.Name = "telephonePortableDataGridViewTextBoxColumn";
+            this.telephonePortableDataGridViewTextBoxColumn.ReadOnly = true;
+            this.telephonePortableDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // siteDataGridViewTextBoxColumn
+            // 
+            this.siteDataGridViewTextBoxColumn.DataPropertyName = "SiteVille";
+            this.siteDataGridViewTextBoxColumn.HeaderText = "Site";
+            this.siteDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.siteDataGridViewTextBoxColumn.Name = "siteDataGridViewTextBoxColumn";
+            this.siteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.siteDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // serviceKeyDataGridViewTextBoxColumn
+            // 
+            this.serviceKeyDataGridViewTextBoxColumn.DataPropertyName = "ServiceNom";
+            this.serviceKeyDataGridViewTextBoxColumn.HeaderText = "Service";
+            this.serviceKeyDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.serviceKeyDataGridViewTextBoxColumn.Name = "serviceKeyDataGridViewTextBoxColumn";
+            this.serviceKeyDataGridViewTextBoxColumn.ReadOnly = true;
+            this.serviceKeyDataGridViewTextBoxColumn.Width = 125;
             // 
             // splitContainer3
             // 
@@ -311,16 +390,158 @@ namespace AnnuaireEntreprise_2019
             this.splitContainer3.Panel2.Controls.Add(this.button_SauvegarderSalarie);
             this.splitContainer3.Panel2.Controls.Add(this.button_SupprimerSalarie);
             this.splitContainer3.Panel2.Controls.Add(this.button_NouveauSalarie);
-            this.splitContainer3.Size = new System.Drawing.Size(261, 574);
+            this.splitContainer3.Size = new System.Drawing.Size(285, 574);
             this.splitContainer3.SplitterDistance = 465;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // groupBox_Service
+            // 
+            this.groupBox_Service.Controls.Add(this.comboBox_Service);
+            this.groupBox_Service.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_Service.Location = new System.Drawing.Point(0, 342);
+            this.groupBox_Service.Name = "groupBox_Service";
+            this.groupBox_Service.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_Service.TabIndex = 11;
+            this.groupBox_Service.TabStop = false;
+            this.groupBox_Service.Text = "Service";
+            // 
+            // comboBox_Service
+            // 
+            this.comboBox_Service.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_Service.FormattingEnabled = true;
+            this.comboBox_Service.Location = new System.Drawing.Point(3, 18);
+            this.comboBox_Service.Name = "comboBox_Service";
+            this.comboBox_Service.Size = new System.Drawing.Size(279, 24);
+            this.comboBox_Service.TabIndex = 0;
+            this.comboBox_Service.Tag = "Service";
+            // 
+            // groupBox_Site
+            // 
+            this.groupBox_Site.Controls.Add(this.comboBox_Site);
+            this.groupBox_Site.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_Site.Location = new System.Drawing.Point(0, 285);
+            this.groupBox_Site.Name = "groupBox_Site";
+            this.groupBox_Site.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_Site.TabIndex = 10;
+            this.groupBox_Site.TabStop = false;
+            this.groupBox_Site.Text = "Site";
+            // 
+            // comboBox_Site
+            // 
+            this.comboBox_Site.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_Site.FormattingEnabled = true;
+            this.comboBox_Site.Location = new System.Drawing.Point(3, 18);
+            this.comboBox_Site.Name = "comboBox_Site";
+            this.comboBox_Site.Size = new System.Drawing.Size(279, 24);
+            this.comboBox_Site.TabIndex = 0;
+            this.comboBox_Site.Tag = "Site";
+            // 
+            // groupBox_Email
+            // 
+            this.groupBox_Email.Controls.Add(this.textBox_Email);
+            this.groupBox_Email.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_Email.Location = new System.Drawing.Point(0, 228);
+            this.groupBox_Email.Name = "groupBox_Email";
+            this.groupBox_Email.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_Email.TabIndex = 9;
+            this.groupBox_Email.TabStop = false;
+            this.groupBox_Email.Text = "Email";
+            // 
+            // textBox_Email
+            // 
+            this.textBox_Email.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_Email.Location = new System.Drawing.Point(3, 18);
+            this.textBox_Email.Name = "textBox_Email";
+            this.textBox_Email.Size = new System.Drawing.Size(279, 22);
+            this.textBox_Email.TabIndex = 0;
+            this.textBox_Email.Tag = "Email";
+            // 
+            // groupBox_TelephonePortable
+            // 
+            this.groupBox_TelephonePortable.Controls.Add(this.textBox_TelephonePortable);
+            this.groupBox_TelephonePortable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_TelephonePortable.Location = new System.Drawing.Point(0, 171);
+            this.groupBox_TelephonePortable.Name = "groupBox_TelephonePortable";
+            this.groupBox_TelephonePortable.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_TelephonePortable.TabIndex = 9;
+            this.groupBox_TelephonePortable.TabStop = false;
+            this.groupBox_TelephonePortable.Text = "Téléphone portable";
+            // 
+            // textBox_TelephonePortable
+            // 
+            this.textBox_TelephonePortable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_TelephonePortable.Location = new System.Drawing.Point(3, 18);
+            this.textBox_TelephonePortable.Name = "textBox_TelephonePortable";
+            this.textBox_TelephonePortable.Size = new System.Drawing.Size(279, 22);
+            this.textBox_TelephonePortable.TabIndex = 0;
+            this.textBox_TelephonePortable.Tag = "TelephonePortable";
+            // 
+            // groupBox_TelephoneFixe
+            // 
+            this.groupBox_TelephoneFixe.Controls.Add(this.textBox_TelephoneFixe);
+            this.groupBox_TelephoneFixe.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_TelephoneFixe.Location = new System.Drawing.Point(0, 114);
+            this.groupBox_TelephoneFixe.Name = "groupBox_TelephoneFixe";
+            this.groupBox_TelephoneFixe.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_TelephoneFixe.TabIndex = 8;
+            this.groupBox_TelephoneFixe.TabStop = false;
+            this.groupBox_TelephoneFixe.Text = "Téléphone fixe";
+            // 
+            // textBox_TelephoneFixe
+            // 
+            this.textBox_TelephoneFixe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_TelephoneFixe.Location = new System.Drawing.Point(3, 18);
+            this.textBox_TelephoneFixe.Name = "textBox_TelephoneFixe";
+            this.textBox_TelephoneFixe.Size = new System.Drawing.Size(279, 22);
+            this.textBox_TelephoneFixe.TabIndex = 0;
+            this.textBox_TelephoneFixe.Tag = "TelephoneFixe";
+            // 
+            // groupBox_Prenom
+            // 
+            this.groupBox_Prenom.Controls.Add(this.textBox_Prenom);
+            this.groupBox_Prenom.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_Prenom.Location = new System.Drawing.Point(0, 57);
+            this.groupBox_Prenom.Name = "groupBox_Prenom";
+            this.groupBox_Prenom.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_Prenom.TabIndex = 8;
+            this.groupBox_Prenom.TabStop = false;
+            this.groupBox_Prenom.Text = "Prénom";
+            // 
+            // textBox_Prenom
+            // 
+            this.textBox_Prenom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_Prenom.Location = new System.Drawing.Point(3, 18);
+            this.textBox_Prenom.Name = "textBox_Prenom";
+            this.textBox_Prenom.Size = new System.Drawing.Size(279, 22);
+            this.textBox_Prenom.TabIndex = 0;
+            this.textBox_Prenom.Tag = "Prenom";
+            // 
+            // groupBox_Nom
+            // 
+            this.groupBox_Nom.Controls.Add(this.textBox_Nom);
+            this.groupBox_Nom.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_Nom.Location = new System.Drawing.Point(0, 0);
+            this.groupBox_Nom.Name = "groupBox_Nom";
+            this.groupBox_Nom.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_Nom.TabIndex = 7;
+            this.groupBox_Nom.TabStop = false;
+            this.groupBox_Nom.Text = "Nom";
+            // 
+            // textBox_Nom
+            // 
+            this.textBox_Nom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_Nom.Location = new System.Drawing.Point(3, 18);
+            this.textBox_Nom.Name = "textBox_Nom";
+            this.textBox_Nom.Size = new System.Drawing.Size(279, 22);
+            this.textBox_Nom.TabIndex = 0;
+            this.textBox_Nom.Tag = "Nom";
             // 
             // button_AnnulerSalarie
             // 
             this.button_AnnulerSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_AnnulerSalarie.Location = new System.Drawing.Point(0, 69);
             this.button_AnnulerSalarie.Name = "button_AnnulerSalarie";
-            this.button_AnnulerSalarie.Size = new System.Drawing.Size(261, 23);
+            this.button_AnnulerSalarie.Size = new System.Drawing.Size(285, 23);
             this.button_AnnulerSalarie.TabIndex = 3;
             this.button_AnnulerSalarie.Text = "Annuler";
             this.button_AnnulerSalarie.UseVisualStyleBackColor = true;
@@ -331,7 +552,7 @@ namespace AnnuaireEntreprise_2019
             this.button_SauvegarderSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_SauvegarderSalarie.Location = new System.Drawing.Point(0, 46);
             this.button_SauvegarderSalarie.Name = "button_SauvegarderSalarie";
-            this.button_SauvegarderSalarie.Size = new System.Drawing.Size(261, 23);
+            this.button_SauvegarderSalarie.Size = new System.Drawing.Size(285, 23);
             this.button_SauvegarderSalarie.TabIndex = 2;
             this.button_SauvegarderSalarie.Text = "Sauvegarder";
             this.button_SauvegarderSalarie.UseVisualStyleBackColor = true;
@@ -342,7 +563,7 @@ namespace AnnuaireEntreprise_2019
             this.button_SupprimerSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_SupprimerSalarie.Location = new System.Drawing.Point(0, 23);
             this.button_SupprimerSalarie.Name = "button_SupprimerSalarie";
-            this.button_SupprimerSalarie.Size = new System.Drawing.Size(261, 23);
+            this.button_SupprimerSalarie.Size = new System.Drawing.Size(285, 23);
             this.button_SupprimerSalarie.TabIndex = 1;
             this.button_SupprimerSalarie.Text = "Supprimer";
             this.button_SupprimerSalarie.UseVisualStyleBackColor = true;
@@ -353,7 +574,7 @@ namespace AnnuaireEntreprise_2019
             this.button_NouveauSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_NouveauSalarie.Location = new System.Drawing.Point(0, 0);
             this.button_NouveauSalarie.Name = "button_NouveauSalarie";
-            this.button_NouveauSalarie.Size = new System.Drawing.Size(261, 23);
+            this.button_NouveauSalarie.Size = new System.Drawing.Size(285, 23);
             this.button_NouveauSalarie.TabIndex = 0;
             this.button_NouveauSalarie.Text = "Nouveau";
             this.button_NouveauSalarie.UseVisualStyleBackColor = true;
@@ -369,110 +590,12 @@ namespace AnnuaireEntreprise_2019
             this.tabPage_Site.Text = "Sites";
             this.tabPage_Site.UseVisualStyleBackColor = true;
             // 
-            // button_ReinitialiserFiltre
-            // 
-            this.button_ReinitialiserFiltre.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_ReinitialiserFiltre.Location = new System.Drawing.Point(3, 269);
-            this.button_ReinitialiserFiltre.Name = "button_ReinitialiserFiltre";
-            this.button_ReinitialiserFiltre.Size = new System.Drawing.Size(203, 23);
-            this.button_ReinitialiserFiltre.TabIndex = 6;
-            this.button_ReinitialiserFiltre.Text = "Réinitialiser";
-            this.button_ReinitialiserFiltre.UseVisualStyleBackColor = true;
-            this.button_ReinitialiserFiltre.Click += new System.EventHandler(this.button_Click);
-            // 
-            // oidDataGridViewTextBoxColumn
-            // 
-            this.oidDataGridViewTextBoxColumn.DataPropertyName = "Oid";
-            this.oidDataGridViewTextBoxColumn.HeaderText = "Oid";
-            this.oidDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.oidDataGridViewTextBoxColumn.Name = "oidDataGridViewTextBoxColumn";
-            this.oidDataGridViewTextBoxColumn.Visible = false;
-            this.oidDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "Nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "Nom";
-            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // prenomDataGridViewTextBoxColumn
-            // 
-            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "Prenom";
-            this.prenomDataGridViewTextBoxColumn.HeaderText = "Prenom";
-            this.prenomDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
-            this.prenomDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // telephoneFixeDataGridViewTextBoxColumn
-            // 
-            this.telephoneFixeDataGridViewTextBoxColumn.DataPropertyName = "TelephoneFixe";
-            this.telephoneFixeDataGridViewTextBoxColumn.HeaderText = "TelephoneFixe";
-            this.telephoneFixeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.telephoneFixeDataGridViewTextBoxColumn.Name = "telephoneFixeDataGridViewTextBoxColumn";
-            this.telephoneFixeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // telephonePortableDataGridViewTextBoxColumn
-            // 
-            this.telephonePortableDataGridViewTextBoxColumn.DataPropertyName = "TelephonePortable";
-            this.telephonePortableDataGridViewTextBoxColumn.HeaderText = "TelephonePortable";
-            this.telephonePortableDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.telephonePortableDataGridViewTextBoxColumn.Name = "telephonePortableDataGridViewTextBoxColumn";
-            this.telephonePortableDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // serviceKeyDataGridViewTextBoxColumn
-            // 
-            this.serviceKeyDataGridViewTextBoxColumn.DataPropertyName = "Service!Key";
-            this.serviceKeyDataGridViewTextBoxColumn.HeaderText = "Service";
-            this.serviceKeyDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.serviceKeyDataGridViewTextBoxColumn.Name = "serviceKeyDataGridViewTextBoxColumn";
-            this.serviceKeyDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // serviceDataGridViewTextBoxColumn
-            // 
-            this.serviceDataGridViewTextBoxColumn.DataPropertyName = "Service!";
-            this.serviceDataGridViewTextBoxColumn.HeaderText = "Service";
-            this.serviceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.serviceDataGridViewTextBoxColumn.Name = "serviceDataGridViewTextBoxColumn";
-            this.serviceDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // siteDataGridViewTextBoxColumn
-            // 
-            this.siteDataGridViewTextBoxColumn.DataPropertyName = "Site!";
-            this.siteDataGridViewTextBoxColumn.HeaderText = "Site";
-            this.siteDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.siteDataGridViewTextBoxColumn.Name = "siteDataGridViewTextBoxColumn";
-            this.siteDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // siteKeyDataGridViewTextBoxColumn
-            // 
-            this.siteKeyDataGridViewTextBoxColumn.DataPropertyName = "Site!Key";
-            this.siteKeyDataGridViewTextBoxColumn.HeaderText = "Site";
-            this.siteKeyDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.siteKeyDataGridViewTextBoxColumn.Name = "siteKeyDataGridViewTextBoxColumn";
-            this.siteKeyDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // xpCollection_Salarie
-            // 
-            this.xpCollection_Salarie.ObjectType = typeof(Data.Salarie);
-            this.xpCollection_Salarie.Session = this.session;
-            // 
             // xpView_Site
             // 
             this.xpView_Site.ObjectType = typeof(Data.Site);
             this.xpView_Site.Properties.AddRange(new DevExpress.Xpo.ViewProperty[] {
             new DevExpress.Xpo.ViewProperty("Oid", DevExpress.Xpo.SortDirection.None, "[Oid]", false, true),
-            new DevExpress.Xpo.ViewProperty("Ville", DevExpress.Xpo.SortDirection.None, "[Ville]", false, true),
-            new DevExpress.Xpo.ViewProperty("IsChecked", DevExpress.Xpo.SortDirection.None, "[IsChecked]", false, true)});
+            new DevExpress.Xpo.ViewProperty("Ville", DevExpress.Xpo.SortDirection.None, "[Ville]", false, true)});
             this.xpView_Site.Session = this.session;
             // 
             // xpView_Service
@@ -483,150 +606,20 @@ namespace AnnuaireEntreprise_2019
             new DevExpress.Xpo.ViewProperty("Nom", DevExpress.Xpo.SortDirection.None, "[Nom]", false, true)});
             this.xpView_Service.Session = this.session;
             // 
-            // xpCollection_Site
-            // 
-            this.xpCollection_Site.ObjectType = typeof(Data.Site);
-            this.xpCollection_Site.Session = this.session;
-            // 
             // xpCollection_Service
             // 
             this.xpCollection_Service.ObjectType = typeof(Data.Service);
             this.xpCollection_Service.Session = this.session;
             // 
-            // groupBox_Nom
+            // xpCollection_Site
             // 
-            this.groupBox_Nom.Controls.Add(this.textBox_Nom);
-            this.groupBox_Nom.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_Nom.Location = new System.Drawing.Point(0, 0);
-            this.groupBox_Nom.Name = "groupBox_Nom";
-            this.groupBox_Nom.Size = new System.Drawing.Size(261, 57);
-            this.groupBox_Nom.TabIndex = 7;
-            this.groupBox_Nom.TabStop = false;
-            this.groupBox_Nom.Text = "Nom";
+            this.xpCollection_Site.ObjectType = typeof(Data.Site);
+            this.xpCollection_Site.Session = this.session;
             // 
-            // textBox_Nom
+            // xpCollection_Salarie
             // 
-            this.textBox_Nom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_Nom.Location = new System.Drawing.Point(3, 18);
-            this.textBox_Nom.Name = "textBox_Nom";
-            this.textBox_Nom.Size = new System.Drawing.Size(255, 22);
-            this.textBox_Nom.TabIndex = 0;
-            // 
-            // groupBox_Prenom
-            // 
-            this.groupBox_Prenom.Controls.Add(this.textBox_Prenom);
-            this.groupBox_Prenom.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_Prenom.Location = new System.Drawing.Point(0, 57);
-            this.groupBox_Prenom.Name = "groupBox_Prenom";
-            this.groupBox_Prenom.Size = new System.Drawing.Size(261, 57);
-            this.groupBox_Prenom.TabIndex = 8;
-            this.groupBox_Prenom.TabStop = false;
-            this.groupBox_Prenom.Text = "Prénom";
-            // 
-            // textBox_Prenom
-            // 
-            this.textBox_Prenom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_Prenom.Location = new System.Drawing.Point(3, 18);
-            this.textBox_Prenom.Name = "textBox_Prenom";
-            this.textBox_Prenom.Size = new System.Drawing.Size(255, 22);
-            this.textBox_Prenom.TabIndex = 0;
-            // 
-            // groupBox_TelephoneFixe
-            // 
-            this.groupBox_TelephoneFixe.Controls.Add(this.textBox__TelephoneFixe);
-            this.groupBox_TelephoneFixe.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_TelephoneFixe.Location = new System.Drawing.Point(0, 114);
-            this.groupBox_TelephoneFixe.Name = "groupBox_TelephoneFixe";
-            this.groupBox_TelephoneFixe.Size = new System.Drawing.Size(261, 57);
-            this.groupBox_TelephoneFixe.TabIndex = 8;
-            this.groupBox_TelephoneFixe.TabStop = false;
-            this.groupBox_TelephoneFixe.Text = "Téléphone fixe";
-            // 
-            // textBox__TelephoneFixe
-            // 
-            this.textBox__TelephoneFixe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox__TelephoneFixe.Location = new System.Drawing.Point(3, 18);
-            this.textBox__TelephoneFixe.Name = "textBox__TelephoneFixe";
-            this.textBox__TelephoneFixe.Size = new System.Drawing.Size(255, 22);
-            this.textBox__TelephoneFixe.TabIndex = 0;
-            // 
-            // groupBox_TelephonePortable
-            // 
-            this.groupBox_TelephonePortable.Controls.Add(this.textBox_TelephonePortable);
-            this.groupBox_TelephonePortable.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_TelephonePortable.Location = new System.Drawing.Point(0, 171);
-            this.groupBox_TelephonePortable.Name = "groupBox_TelephonePortable";
-            this.groupBox_TelephonePortable.Size = new System.Drawing.Size(261, 57);
-            this.groupBox_TelephonePortable.TabIndex = 9;
-            this.groupBox_TelephonePortable.TabStop = false;
-            this.groupBox_TelephonePortable.Text = "Téléphone portable";
-            // 
-            // textBox_TelephonePortable
-            // 
-            this.textBox_TelephonePortable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_TelephonePortable.Location = new System.Drawing.Point(3, 18);
-            this.textBox_TelephonePortable.Name = "textBox_TelephonePortable";
-            this.textBox_TelephonePortable.Size = new System.Drawing.Size(255, 22);
-            this.textBox_TelephonePortable.TabIndex = 0;
-            // 
-            // groupBox_Email
-            // 
-            this.groupBox_Email.Controls.Add(this.textBox_Email);
-            this.groupBox_Email.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_Email.Location = new System.Drawing.Point(0, 228);
-            this.groupBox_Email.Name = "groupBox_Email";
-            this.groupBox_Email.Size = new System.Drawing.Size(261, 57);
-            this.groupBox_Email.TabIndex = 9;
-            this.groupBox_Email.TabStop = false;
-            this.groupBox_Email.Text = "Email";
-            // 
-            // textBox_Email
-            // 
-            this.textBox_Email.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_Email.Location = new System.Drawing.Point(3, 18);
-            this.textBox_Email.Name = "textBox_Email";
-            this.textBox_Email.Size = new System.Drawing.Size(255, 22);
-            this.textBox_Email.TabIndex = 0;
-            // 
-            // groupBox_Site
-            // 
-            this.groupBox_Site.Controls.Add(this.comboBox__Site);
-            this.groupBox_Site.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_Site.Location = new System.Drawing.Point(0, 285);
-            this.groupBox_Site.Name = "groupBox_Site";
-            this.groupBox_Site.Size = new System.Drawing.Size(261, 57);
-            this.groupBox_Site.TabIndex = 10;
-            this.groupBox_Site.TabStop = false;
-            this.groupBox_Site.Text = "Site";
-            // 
-            // comboBox__Site
-            // 
-            this.comboBox__Site.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox__Site.FormattingEnabled = true;
-            this.comboBox__Site.Location = new System.Drawing.Point(3, 18);
-            this.comboBox__Site.Name = "comboBox__Site";
-            this.comboBox__Site.Size = new System.Drawing.Size(255, 24);
-            this.comboBox__Site.TabIndex = 0;
-            // 
-            // groupBox_Service
-            // 
-            this.groupBox_Service.Controls.Add(this.comboBox_Service);
-            this.groupBox_Service.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_Service.Location = new System.Drawing.Point(0, 342);
-            this.groupBox_Service.Name = "groupBox_Service";
-            this.groupBox_Service.Size = new System.Drawing.Size(261, 57);
-            this.groupBox_Service.TabIndex = 11;
-            this.groupBox_Service.TabStop = false;
-            this.groupBox_Service.Text = "Service";
-            // 
-            // comboBox_Service
-            // 
-            this.comboBox_Service.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox_Service.FormattingEnabled = true;
-            this.comboBox_Service.Location = new System.Drawing.Point(3, 18);
-            this.comboBox_Service.Name = "comboBox_Service";
-            this.comboBox_Service.Size = new System.Drawing.Size(255, 24);
-            this.comboBox_Service.TabIndex = 0;
+            this.xpCollection_Salarie.ObjectType = typeof(Data.Salarie);
+            this.xpCollection_Salarie.Session = this.session;
             // 
             // MainForm
             // 
@@ -649,28 +642,28 @@ namespace AnnuaireEntreprise_2019
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Salarie)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.session)).EndInit();
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Salarie)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpView_Site)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpView_Service)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Site)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Service)).EndInit();
-            this.groupBox_Nom.ResumeLayout(false);
-            this.groupBox_Nom.PerformLayout();
-            this.groupBox_Prenom.ResumeLayout(false);
-            this.groupBox_Prenom.PerformLayout();
-            this.groupBox_TelephoneFixe.ResumeLayout(false);
-            this.groupBox_TelephoneFixe.PerformLayout();
-            this.groupBox_TelephonePortable.ResumeLayout(false);
-            this.groupBox_TelephonePortable.PerformLayout();
+            this.groupBox_Service.ResumeLayout(false);
+            this.groupBox_Site.ResumeLayout(false);
             this.groupBox_Email.ResumeLayout(false);
             this.groupBox_Email.PerformLayout();
-            this.groupBox_Site.ResumeLayout(false);
-            this.groupBox_Service.ResumeLayout(false);
+            this.groupBox_TelephonePortable.ResumeLayout(false);
+            this.groupBox_TelephonePortable.PerformLayout();
+            this.groupBox_TelephoneFixe.ResumeLayout(false);
+            this.groupBox_TelephoneFixe.PerformLayout();
+            this.groupBox_Prenom.ResumeLayout(false);
+            this.groupBox_Prenom.PerformLayout();
+            this.groupBox_Nom.ResumeLayout(false);
+            this.groupBox_Nom.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.session)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpView_Site)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpView_Service)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Service)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Site)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Salarie)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -696,20 +689,8 @@ namespace AnnuaireEntreprise_2019
         private System.Windows.Forms.Button button_SupprimerSalarie;
         private System.Windows.Forms.Button button_NouveauSalarie;
         private DevExpress.Xpo.Session session;
-        private DevExpress.Xpo.XPCollection xpCollection_Salarie;
         private DevExpress.Xpo.XPView xpView_Site;
         private DevExpress.Xpo.XPView xpView_Service;
-        private System.Windows.Forms.DataGridViewTextBoxColumn oidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prenomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telephoneFixeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telephonePortableDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serviceKeyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serviceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn siteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn siteKeyDataGridViewTextBoxColumn;
-        private DevExpress.Xpo.XPCollection xpCollection_Site;
         private DevExpress.Xpo.XPCollection xpCollection_Service;
         private System.Windows.Forms.Button button_ReinitialiserFiltre;
         private System.Windows.Forms.GroupBox groupBox_Site;
@@ -718,14 +699,24 @@ namespace AnnuaireEntreprise_2019
         private System.Windows.Forms.GroupBox groupBox_TelephonePortable;
         private System.Windows.Forms.TextBox textBox_TelephonePortable;
         private System.Windows.Forms.GroupBox groupBox_TelephoneFixe;
-        private System.Windows.Forms.TextBox textBox__TelephoneFixe;
+        private System.Windows.Forms.TextBox textBox_TelephoneFixe;
         private System.Windows.Forms.GroupBox groupBox_Prenom;
         private System.Windows.Forms.TextBox textBox_Prenom;
         private System.Windows.Forms.GroupBox groupBox_Nom;
         private System.Windows.Forms.TextBox textBox_Nom;
         private System.Windows.Forms.GroupBox groupBox_Service;
         private System.Windows.Forms.ComboBox comboBox_Service;
-        private System.Windows.Forms.ComboBox comboBox__Site;
+        private System.Windows.Forms.ComboBox comboBox_Site;
+        private System.Windows.Forms.DataGridViewTextBoxColumn oidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prenomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telephoneFixeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telephonePortableDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn siteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serviceKeyDataGridViewTextBoxColumn;
+        private DevExpress.Xpo.XPCollection xpCollection_Site;
+        private DevExpress.Xpo.XPCollection xpCollection_Salarie;
     }
 }
 
