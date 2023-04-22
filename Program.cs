@@ -1,4 +1,4 @@
-﻿using AnnuaireEntreprise_2019.Data.AnnuaireEntreprise_DEV;
+﻿using Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace AnnuaireEntreprise_2019
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Annuaire());
+            Application.Run(new MainForm());
         }
     }
 }

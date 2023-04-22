@@ -13,7 +13,7 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-namespace AnnuaireEntreprise_2019.Data.AnnuaireEntreprise_DEV
+namespace Data
 {
 
     public partial class Site : XPObject
@@ -23,12 +23,6 @@ namespace AnnuaireEntreprise_2019.Data.AnnuaireEntreprise_DEV
         {
             get { return fVille; }
             set { SetPropertyValue<string>(nameof(Ville), ref fVille, value); }
-        }
-        bool fIsChecked;
-        public bool IsChecked
-        {
-            get { return fIsChecked; }
-            set { SetPropertyValue<bool>(nameof(IsChecked), ref fIsChecked, value); }
         }
         [Association(@"SalarieReferencesSite")]
         public XPCollection<Salarie> Salaries { get { return GetCollection<Salarie>(nameof(Salaries)); } }
