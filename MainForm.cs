@@ -41,6 +41,7 @@ namespace AnnuaireEntreprise_2019
             InitializeComponent();
 
             this.dataGridView_Salarie.AutoGenerateColumns = false;
+            this.dataGridView_Site.AutoGenerateColumns = false;
 
             Salaries = new XPCollection<Salarie>(this.session);
             this.dataGridView_Salarie.DataSource = Salaries;
@@ -50,6 +51,9 @@ namespace AnnuaireEntreprise_2019
             Sites = new XPCollection<Site>(this.session);
             ((ListBox)this.checkedListBox_Site).DataSource = Sites;
             ((ListBox)this.checkedListBox_Site).DisplayMember = "Ville";
+            this.dataGridView_Site.DataSource = Sites;
+            this.xpCollection_Site.Dispose();
+            Sites.ListChanged += ListChanged;
 
             Services = new XPCollection<Service>(this.session);
             ((ListBox)this.checkedListBox_Service).DataSource = Services;
@@ -76,6 +80,18 @@ namespace AnnuaireEntreprise_2019
             };
         }
 
+        private void ListChanged(object sender, ListChangedEventArgs e)
+        {
+
+            if (sender == this.Sites)
+            {
+                this.xpView_Site.Reload();
+            }else if(sender == this.Services){
+                this.xpView_Service.Reload();
+            }
+
+            this.Annuler();
+        }
         private void button_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -99,12 +115,12 @@ namespace AnnuaireEntreprise_2019
                     case "button_ReinitialiserFiltre":
                         ReinitialiserFiltre();
                         break;
-                        //case "button_NouveauSite":
-                        //    NouveauSite();
-                        //    break;
-                        //case "button_SupprimerSite":
-                        //    SupprimerSite();
-                        //    break;
+                    case "button_NouveauSite":
+                        NouveauSite();
+                        break;
+                    case "button_SupprimerSite":
+                        SupprimerSite();
+                        break;
                 }
             }
         }
@@ -256,7 +272,7 @@ namespace AnnuaireEntreprise_2019
                 this.checkedListBox_Site.SetItemChecked(i, false);
             }
 
-            foreach (Site site in this.xpCollection_Site)
+            foreach (Site site in Sites)
             {
                 if (site.IsChecked)
                 {
@@ -276,37 +292,44 @@ namespace AnnuaireEntreprise_2019
 
         }
 
-        //private void NouveauSite()
-        //{
-        //    Site site = new Site(this.session);
+        private void NouveauSite()
+        {
+            Site site = new Site(this.session);
 
-        //    site.Save();
+            site.Save();
 
-        //    this.xpCollection_Site.Reload();
-        //    xpCollection_Site.Reload();
+            this.Sites.Reload();
+            this.Sites.Reload();
 
-        //    this.dataGridView_Site.Rows[xpCollectionSite.IndexOf(site)].Selected = true;
-        //}
+            this.dataGridView_Site.Rows[this.Sites.IndexOf(site)].Selected = true;
+        }
 
-        //private void SupprimerSite()
-        //{
-        //    if (dataGridView_Site.SelectedRows.Count > 0)
-        //    {
-        //        DataGridViewRow row = dataGridView_Site.SelectedRows[0];
+        private void SupprimerSite()
+        {
+            if (dataGridView_Site.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridView_Site.SelectedRows[0];
 
-        //        if (row != null)
-        //        {
-        //            Site? site = row.DataBoundItem as Site;
+                if (row != null)
+                {
+                    Site site = row.DataBoundItem as Site;
 
-        //            if (site != null)
-        //            {
-        //                row.Dispose();
-        //                site.Delete();
-        //                xpCollectionSite.Reload();
-        //            }
-        //        }
-        //    }
-        //}
+                    if (site != null)
+                    {
+
+                        if (Salaries.Any(s=> s.Site != null && s.Site.Oid == site.Oid)){
+                            MessageBox.Show(this,$"Impssible de supprimer le site {site.Ville}. Au moins un salarié y est affecté.","Suppression impossible");
+                        }
+                        else
+                        {
+                        row.Dispose();
+                        site.Delete();
+                        this.Sites.Reload();
+                        }
+                    }
+                }
+            }
+        }
         private void textBox_NomPrenom_TextChanged(object sender, EventArgs e)
         {
             UpdateCriteria();
@@ -348,7 +371,7 @@ namespace AnnuaireEntreprise_2019
 
 
             BinaryOperator SiteOp = null;
-            foreach (Site site in this.xpCollection_Site)
+            foreach (Site site in this.Sites)
             {
                 if (site.IsChecked)
                 {

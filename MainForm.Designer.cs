@@ -72,11 +72,18 @@ namespace AnnuaireEntreprise_2019
             this.button_NouveauSalarie = new System.Windows.Forms.Button();
             this.tabPage_Site = new System.Windows.Forms.TabPage();
             this.session = new DevExpress.Xpo.Session(this.components);
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.dataGridView_Site = new System.Windows.Forms.DataGridView();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.button_SupprimerSite = new System.Windows.Forms.Button();
+            this.button_NouveauSite = new System.Windows.Forms.Button();
+            this.xpCollection_Site = new DevExpress.Xpo.XPCollection(this.components);
             this.xpView_Site = new DevExpress.Xpo.XPView(this.components);
             this.xpView_Service = new DevExpress.Xpo.XPView(this.components);
             this.xpCollection_Service = new DevExpress.Xpo.XPCollection(this.components);
-            this.xpCollection_Site = new DevExpress.Xpo.XPCollection(this.components);
             this.xpCollection_Salarie = new DevExpress.Xpo.XPCollection(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ville = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage_Salarie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -100,11 +107,20 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_TelephoneFixe.SuspendLayout();
             this.groupBox_Prenom.SuspendLayout();
             this.groupBox_Nom.SuspendLayout();
+            this.tabPage_Site.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.session)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Site)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Site)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpView_Site)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpView_Service)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Service)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Site)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Salarie)).BeginInit();
             this.SuspendLayout();
             // 
@@ -262,7 +278,7 @@ namespace AnnuaireEntreprise_2019
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(1132, 576);
-            this.splitContainer2.SplitterDistance = 835;
+            this.splitContainer2.SplitterDistance = 829;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -289,7 +305,7 @@ namespace AnnuaireEntreprise_2019
             this.dataGridView_Salarie.RowHeadersWidth = 51;
             this.dataGridView_Salarie.RowTemplate.Height = 24;
             this.dataGridView_Salarie.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Salarie.Size = new System.Drawing.Size(833, 574);
+            this.dataGridView_Salarie.Size = new System.Drawing.Size(827, 574);
             this.dataGridView_Salarie.TabIndex = 0;
             this.dataGridView_Salarie.SelectionChanged += new System.EventHandler(this.dataGridView_Salarie_SelectionChanged);
             // 
@@ -390,7 +406,7 @@ namespace AnnuaireEntreprise_2019
             this.splitContainer3.Panel2.Controls.Add(this.button_SauvegarderSalarie);
             this.splitContainer3.Panel2.Controls.Add(this.button_SupprimerSalarie);
             this.splitContainer3.Panel2.Controls.Add(this.button_NouveauSalarie);
-            this.splitContainer3.Size = new System.Drawing.Size(285, 574);
+            this.splitContainer3.Size = new System.Drawing.Size(291, 574);
             this.splitContainer3.SplitterDistance = 465;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -400,7 +416,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Service.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_Service.Location = new System.Drawing.Point(0, 342);
             this.groupBox_Service.Name = "groupBox_Service";
-            this.groupBox_Service.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_Service.Size = new System.Drawing.Size(291, 57);
             this.groupBox_Service.TabIndex = 11;
             this.groupBox_Service.TabStop = false;
             this.groupBox_Service.Text = "Service";
@@ -411,7 +427,7 @@ namespace AnnuaireEntreprise_2019
             this.comboBox_Service.FormattingEnabled = true;
             this.comboBox_Service.Location = new System.Drawing.Point(3, 18);
             this.comboBox_Service.Name = "comboBox_Service";
-            this.comboBox_Service.Size = new System.Drawing.Size(279, 24);
+            this.comboBox_Service.Size = new System.Drawing.Size(285, 24);
             this.comboBox_Service.TabIndex = 0;
             this.comboBox_Service.Tag = "Service";
             // 
@@ -421,7 +437,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Site.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_Site.Location = new System.Drawing.Point(0, 285);
             this.groupBox_Site.Name = "groupBox_Site";
-            this.groupBox_Site.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_Site.Size = new System.Drawing.Size(291, 57);
             this.groupBox_Site.TabIndex = 10;
             this.groupBox_Site.TabStop = false;
             this.groupBox_Site.Text = "Site";
@@ -432,7 +448,7 @@ namespace AnnuaireEntreprise_2019
             this.comboBox_Site.FormattingEnabled = true;
             this.comboBox_Site.Location = new System.Drawing.Point(3, 18);
             this.comboBox_Site.Name = "comboBox_Site";
-            this.comboBox_Site.Size = new System.Drawing.Size(279, 24);
+            this.comboBox_Site.Size = new System.Drawing.Size(285, 24);
             this.comboBox_Site.TabIndex = 0;
             this.comboBox_Site.Tag = "Site";
             // 
@@ -442,7 +458,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Email.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_Email.Location = new System.Drawing.Point(0, 228);
             this.groupBox_Email.Name = "groupBox_Email";
-            this.groupBox_Email.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_Email.Size = new System.Drawing.Size(291, 57);
             this.groupBox_Email.TabIndex = 9;
             this.groupBox_Email.TabStop = false;
             this.groupBox_Email.Text = "Email";
@@ -452,7 +468,7 @@ namespace AnnuaireEntreprise_2019
             this.textBox_Email.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_Email.Location = new System.Drawing.Point(3, 18);
             this.textBox_Email.Name = "textBox_Email";
-            this.textBox_Email.Size = new System.Drawing.Size(279, 22);
+            this.textBox_Email.Size = new System.Drawing.Size(285, 22);
             this.textBox_Email.TabIndex = 0;
             this.textBox_Email.Tag = "Email";
             // 
@@ -462,7 +478,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_TelephonePortable.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_TelephonePortable.Location = new System.Drawing.Point(0, 171);
             this.groupBox_TelephonePortable.Name = "groupBox_TelephonePortable";
-            this.groupBox_TelephonePortable.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_TelephonePortable.Size = new System.Drawing.Size(291, 57);
             this.groupBox_TelephonePortable.TabIndex = 9;
             this.groupBox_TelephonePortable.TabStop = false;
             this.groupBox_TelephonePortable.Text = "Téléphone portable";
@@ -472,7 +488,7 @@ namespace AnnuaireEntreprise_2019
             this.textBox_TelephonePortable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_TelephonePortable.Location = new System.Drawing.Point(3, 18);
             this.textBox_TelephonePortable.Name = "textBox_TelephonePortable";
-            this.textBox_TelephonePortable.Size = new System.Drawing.Size(279, 22);
+            this.textBox_TelephonePortable.Size = new System.Drawing.Size(285, 22);
             this.textBox_TelephonePortable.TabIndex = 0;
             this.textBox_TelephonePortable.Tag = "TelephonePortable";
             // 
@@ -482,7 +498,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_TelephoneFixe.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_TelephoneFixe.Location = new System.Drawing.Point(0, 114);
             this.groupBox_TelephoneFixe.Name = "groupBox_TelephoneFixe";
-            this.groupBox_TelephoneFixe.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_TelephoneFixe.Size = new System.Drawing.Size(291, 57);
             this.groupBox_TelephoneFixe.TabIndex = 8;
             this.groupBox_TelephoneFixe.TabStop = false;
             this.groupBox_TelephoneFixe.Text = "Téléphone fixe";
@@ -492,7 +508,7 @@ namespace AnnuaireEntreprise_2019
             this.textBox_TelephoneFixe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_TelephoneFixe.Location = new System.Drawing.Point(3, 18);
             this.textBox_TelephoneFixe.Name = "textBox_TelephoneFixe";
-            this.textBox_TelephoneFixe.Size = new System.Drawing.Size(279, 22);
+            this.textBox_TelephoneFixe.Size = new System.Drawing.Size(285, 22);
             this.textBox_TelephoneFixe.TabIndex = 0;
             this.textBox_TelephoneFixe.Tag = "TelephoneFixe";
             // 
@@ -502,7 +518,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Prenom.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_Prenom.Location = new System.Drawing.Point(0, 57);
             this.groupBox_Prenom.Name = "groupBox_Prenom";
-            this.groupBox_Prenom.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_Prenom.Size = new System.Drawing.Size(291, 57);
             this.groupBox_Prenom.TabIndex = 8;
             this.groupBox_Prenom.TabStop = false;
             this.groupBox_Prenom.Text = "Prénom";
@@ -512,7 +528,7 @@ namespace AnnuaireEntreprise_2019
             this.textBox_Prenom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_Prenom.Location = new System.Drawing.Point(3, 18);
             this.textBox_Prenom.Name = "textBox_Prenom";
-            this.textBox_Prenom.Size = new System.Drawing.Size(279, 22);
+            this.textBox_Prenom.Size = new System.Drawing.Size(285, 22);
             this.textBox_Prenom.TabIndex = 0;
             this.textBox_Prenom.Tag = "Prenom";
             // 
@@ -522,7 +538,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Nom.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_Nom.Location = new System.Drawing.Point(0, 0);
             this.groupBox_Nom.Name = "groupBox_Nom";
-            this.groupBox_Nom.Size = new System.Drawing.Size(285, 57);
+            this.groupBox_Nom.Size = new System.Drawing.Size(291, 57);
             this.groupBox_Nom.TabIndex = 7;
             this.groupBox_Nom.TabStop = false;
             this.groupBox_Nom.Text = "Nom";
@@ -532,7 +548,7 @@ namespace AnnuaireEntreprise_2019
             this.textBox_Nom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_Nom.Location = new System.Drawing.Point(3, 18);
             this.textBox_Nom.Name = "textBox_Nom";
-            this.textBox_Nom.Size = new System.Drawing.Size(279, 22);
+            this.textBox_Nom.Size = new System.Drawing.Size(285, 22);
             this.textBox_Nom.TabIndex = 0;
             this.textBox_Nom.Tag = "Nom";
             // 
@@ -541,7 +557,7 @@ namespace AnnuaireEntreprise_2019
             this.button_AnnulerSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_AnnulerSalarie.Location = new System.Drawing.Point(0, 69);
             this.button_AnnulerSalarie.Name = "button_AnnulerSalarie";
-            this.button_AnnulerSalarie.Size = new System.Drawing.Size(285, 23);
+            this.button_AnnulerSalarie.Size = new System.Drawing.Size(291, 23);
             this.button_AnnulerSalarie.TabIndex = 3;
             this.button_AnnulerSalarie.Text = "Annuler";
             this.button_AnnulerSalarie.UseVisualStyleBackColor = true;
@@ -552,7 +568,7 @@ namespace AnnuaireEntreprise_2019
             this.button_SauvegarderSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_SauvegarderSalarie.Location = new System.Drawing.Point(0, 46);
             this.button_SauvegarderSalarie.Name = "button_SauvegarderSalarie";
-            this.button_SauvegarderSalarie.Size = new System.Drawing.Size(285, 23);
+            this.button_SauvegarderSalarie.Size = new System.Drawing.Size(291, 23);
             this.button_SauvegarderSalarie.TabIndex = 2;
             this.button_SauvegarderSalarie.Text = "Sauvegarder";
             this.button_SauvegarderSalarie.UseVisualStyleBackColor = true;
@@ -563,7 +579,7 @@ namespace AnnuaireEntreprise_2019
             this.button_SupprimerSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_SupprimerSalarie.Location = new System.Drawing.Point(0, 23);
             this.button_SupprimerSalarie.Name = "button_SupprimerSalarie";
-            this.button_SupprimerSalarie.Size = new System.Drawing.Size(285, 23);
+            this.button_SupprimerSalarie.Size = new System.Drawing.Size(291, 23);
             this.button_SupprimerSalarie.TabIndex = 1;
             this.button_SupprimerSalarie.Text = "Supprimer";
             this.button_SupprimerSalarie.UseVisualStyleBackColor = true;
@@ -574,7 +590,7 @@ namespace AnnuaireEntreprise_2019
             this.button_NouveauSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_NouveauSalarie.Location = new System.Drawing.Point(0, 0);
             this.button_NouveauSalarie.Name = "button_NouveauSalarie";
-            this.button_NouveauSalarie.Size = new System.Drawing.Size(285, 23);
+            this.button_NouveauSalarie.Size = new System.Drawing.Size(291, 23);
             this.button_NouveauSalarie.TabIndex = 0;
             this.button_NouveauSalarie.Text = "Nouveau";
             this.button_NouveauSalarie.UseVisualStyleBackColor = true;
@@ -582,6 +598,7 @@ namespace AnnuaireEntreprise_2019
             // 
             // tabPage_Site
             // 
+            this.tabPage_Site.Controls.Add(this.splitContainer4);
             this.tabPage_Site.Location = new System.Drawing.Point(4, 25);
             this.tabPage_Site.Name = "tabPage_Site";
             this.tabPage_Site.Padding = new System.Windows.Forms.Padding(3);
@@ -589,6 +606,90 @@ namespace AnnuaireEntreprise_2019
             this.tabPage_Site.TabIndex = 1;
             this.tabPage_Site.Text = "Sites";
             this.tabPage_Site.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer4.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.dataGridView_Site);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
+            this.splitContainer4.Size = new System.Drawing.Size(1353, 576);
+            this.splitContainer4.SplitterDistance = 1044;
+            this.splitContainer4.SplitterWidth = 10;
+            this.splitContainer4.TabIndex = 1;
+            // 
+            // dataGridView_Site
+            // 
+            this.dataGridView_Site.AllowUserToAddRows = false;
+            this.dataGridView_Site.AllowUserToDeleteRows = false;
+            this.dataGridView_Site.AllowUserToOrderColumns = true;
+            this.dataGridView_Site.AutoGenerateColumns = false;
+            this.dataGridView_Site.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Site.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.Ville});
+            this.dataGridView_Site.DataSource = this.xpCollection_Site;
+            this.dataGridView_Site.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_Site.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView_Site.MultiSelect = false;
+            this.dataGridView_Site.Name = "dataGridView_Site";
+            this.dataGridView_Site.RowHeadersWidth = 51;
+            this.dataGridView_Site.RowTemplate.Height = 24;
+            this.dataGridView_Site.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_Site.Size = new System.Drawing.Size(1042, 574);
+            this.dataGridView_Site.TabIndex = 0;
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.button_SupprimerSite);
+            this.splitContainer5.Panel2.Controls.Add(this.button_NouveauSite);
+            this.splitContainer5.Size = new System.Drawing.Size(297, 574);
+            this.splitContainer5.SplitterDistance = 465;
+            this.splitContainer5.TabIndex = 0;
+            // 
+            // button_SupprimerSite
+            // 
+            this.button_SupprimerSite.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_SupprimerSite.Location = new System.Drawing.Point(0, 23);
+            this.button_SupprimerSite.Name = "button_SupprimerSite";
+            this.button_SupprimerSite.Size = new System.Drawing.Size(297, 23);
+            this.button_SupprimerSite.TabIndex = 1;
+            this.button_SupprimerSite.Text = "Supprimer";
+            this.button_SupprimerSite.UseVisualStyleBackColor = true;
+            this.button_SupprimerSite.Click += new System.EventHandler(this.button_Click);
+            // 
+            // button_NouveauSite
+            // 
+            this.button_NouveauSite.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_NouveauSite.Location = new System.Drawing.Point(0, 0);
+            this.button_NouveauSite.Name = "button_NouveauSite";
+            this.button_NouveauSite.Size = new System.Drawing.Size(297, 23);
+            this.button_NouveauSite.TabIndex = 0;
+            this.button_NouveauSite.Text = "Nouveau";
+            this.button_NouveauSite.UseVisualStyleBackColor = true;
+            this.button_NouveauSite.Click += new System.EventHandler(this.button_Click);
+            // 
+            // xpCollection_Site
+            // 
+            this.xpCollection_Site.ObjectType = typeof(Data.Site);
+            this.xpCollection_Site.Session = this.session;
             // 
             // xpView_Site
             // 
@@ -611,15 +712,27 @@ namespace AnnuaireEntreprise_2019
             this.xpCollection_Service.ObjectType = typeof(Data.Service);
             this.xpCollection_Service.Session = this.session;
             // 
-            // xpCollection_Site
-            // 
-            this.xpCollection_Site.ObjectType = typeof(Data.Site);
-            this.xpCollection_Site.Session = this.session;
-            // 
             // xpCollection_Salarie
             // 
             this.xpCollection_Salarie.ObjectType = typeof(Data.Salarie);
             this.xpCollection_Salarie.Session = this.session;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Oid";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Oid";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // Ville
+            // 
+            this.Ville.DataPropertyName = "Ville";
+            this.Ville.HeaderText = "Ville";
+            this.Ville.MinimumWidth = 6;
+            this.Ville.Name = "Ville";
+            this.Ville.Width = 125;
             // 
             // MainForm
             // 
@@ -658,11 +771,20 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Prenom.PerformLayout();
             this.groupBox_Nom.ResumeLayout(false);
             this.groupBox_Nom.PerformLayout();
+            this.tabPage_Site.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.session)).EndInit();
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Site)).EndInit();
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Site)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpView_Site)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpView_Service)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Service)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Site)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection_Salarie)).EndInit();
             this.ResumeLayout(false);
 
@@ -717,6 +839,13 @@ namespace AnnuaireEntreprise_2019
         private System.Windows.Forms.DataGridViewTextBoxColumn serviceKeyDataGridViewTextBoxColumn;
         private DevExpress.Xpo.XPCollection xpCollection_Site;
         private DevExpress.Xpo.XPCollection xpCollection_Salarie;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.DataGridView dataGridView_Site;
+        private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.Button button_SupprimerSite;
+        private System.Windows.Forms.Button button_NouveauSite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ville;
     }
 }
 
