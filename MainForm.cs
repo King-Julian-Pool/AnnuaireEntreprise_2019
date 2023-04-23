@@ -42,30 +42,29 @@ namespace AnnuaireEntreprise_2019
 
             this.dataGridView_Salarie.AutoGenerateColumns = false;
             this.dataGridView_Site.AutoGenerateColumns = false;
+            this.dataGridView_Service.AutoGenerateColumns = false;
 
             Salaries = new XPCollection<Salarie>(this.session);
             this.dataGridView_Salarie.DataSource = Salaries;
 
-            this.xpCollection_Salarie.Dispose();
 
             Sites = new XPCollection<Site>(this.session);
             ((ListBox)this.checkedListBox_Site).DataSource = Sites;
             ((ListBox)this.checkedListBox_Site).DisplayMember = "Ville";
             this.dataGridView_Site.DataSource = Sites;
-            this.xpCollection_Site.Dispose();
             Sites.ListChanged += ListChanged;
 
             Services = new XPCollection<Service>(this.session);
             ((ListBox)this.checkedListBox_Service).DataSource = Services;
             ((ListBox)this.checkedListBox_Service).DisplayMember = "Nom";
+            this.dataGridView_Service.DataSource = Services;
+            Services.ListChanged += ListChanged;
 
-
-            
             this.comboBox_Site.DataSource = this.xpView_Site;
             this.comboBox_Site.DisplayMember = "Ville";
             this.comboBox_Site.ValueMember = "Oid";
 
-            this.comboBox_Service.DataSource = this.xpCollection_Service;
+            this.comboBox_Service.DataSource = this.xpView_Service;
             this.comboBox_Service.DisplayMember = "Nom";
             this.comboBox_Service.ValueMember = "Oid";
 
@@ -120,6 +119,12 @@ namespace AnnuaireEntreprise_2019
                         break;
                     case "button_SupprimerSite":
                         SupprimerSite();
+                        break;
+                    case "button_NouveauService":
+                        NouveauService();
+                        break;
+                    case "button_SupprimerService":
+                        SupprimerService();
                         break;
                 }
             }
@@ -280,7 +285,7 @@ namespace AnnuaireEntreprise_2019
                 }
             }
 
-            foreach (Service service in this.xpCollection_Service)
+            foreach (Service service in this.Services)
             {
                 if (service.IsChecked)
                 {
@@ -330,6 +335,46 @@ namespace AnnuaireEntreprise_2019
                 }
             }
         }
+
+        private void NouveauService()
+        {
+            Service service = new Service(this.session);
+
+            service.Save();
+
+            this.Services.Reload();
+            this.Services.Reload();
+
+            this.dataGridView_Service.Rows[this.Services.IndexOf(service)].Selected = true;
+        }
+
+        private void SupprimerService()
+        {
+            if (dataGridView_Service.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridView_Service.SelectedRows[0];
+
+                if (row != null)
+                {
+                    Service service = row.DataBoundItem as Service;
+
+                    if (service != null)
+                    {
+                        if (Salaries.Any(s => s.Service != null && s.Service.Oid == service.Oid))
+                        {
+                            MessageBox.Show(this, $"Impssible de supprimer le service {service.Nom}. Au moins un salarié y est affecté.", "Suppression impossible");
+                        }
+                        else
+                        {
+                            row.Dispose();
+                            service.Delete();
+                            this.Services.Reload();
+                        }
+                    }
+                }
+            }
+        }
+
         private void textBox_NomPrenom_TextChanged(object sender, EventArgs e)
         {
             UpdateCriteria();
@@ -381,7 +426,7 @@ namespace AnnuaireEntreprise_2019
             }
 
             BinaryOperator ServiceOp = null;
-            foreach (Service service in this.xpCollection_Service)
+            foreach (Service service in this.Services)
             {
                 if (service.IsChecked)
                 {

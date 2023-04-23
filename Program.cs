@@ -15,7 +15,7 @@ namespace AnnuaireEntreprise_2019
         [STAThread]
         static void Main()
         {
-            ConnectionHelper.Connect(DevExpress.Xpo.DB.AutoCreateOption.SchemaAlreadyExists, true);
+            ConnectionHelper.Connect(DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema, true);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
