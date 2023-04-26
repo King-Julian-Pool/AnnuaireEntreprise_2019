@@ -9,6 +9,7 @@ namespace AnnuaireEntreprise_2019
 {
     static class Program
     {
+        public const string SecretKey = "C1é_5ecrè7e!";
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>

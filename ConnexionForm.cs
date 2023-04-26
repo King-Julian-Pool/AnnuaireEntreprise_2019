@@ -45,20 +45,17 @@ namespace AnnuaireEntreprise_2019
         private void Connexion()
         {
             string identifiant = this.textBox_Identifiant.Text;
-            string cryptedMotDePasse = this.textBox_MotDePasse.Text;
+            string MotDePasse = this.textBox_MotDePasse.Text;
 
-            if (identifiant != string.Empty && cryptedMotDePasse != string.Empty)
+            if (identifiant != string.Empty && MotDePasse != string.Empty)
             {
-                string decryptedMotDePasse = this.Decrypt(cryptedMotDePasse);
-
                 BinaryOperator identifiantOp = new BinaryOperator(nameof(Utilisateur.Identifiant), identifiant);
-                BinaryOperator motDePasseOp = new BinaryOperator(nameof(Utilisateur.MotDePasse), decryptedMotDePasse);
 
-                Utilisateur utilisateur = session.FindObject<Utilisateur>(CriteriaOperator.And(identifiantOp, motDePasseOp));
+                Utilisateur utilisateur = session.FindObject<Utilisateur>(CriteriaOperator.And(identifiantOp));
 
                 if (this.parentMainForm is MainForm)
                 {
-                    if (utilisateur != null)
+                    if (utilisateur != null && BCrypt.Net.BCrypt.Verify(string.Format("{0}.{1}", MotDePasse, Program.SecretKey),utilisateur.MotDePasse))
                     {
                         parentMainForm.utilisateurIdentifiant = utilisateur.Identifiant;
                         parentMainForm.modeAdmin = utilisateur.Admin;
@@ -75,15 +72,6 @@ namespace AnnuaireEntreprise_2019
             {
                 this.label_Erreur.Text = "Veuillez renseigner un identifiant et un mot de passe";
             }
-        }
-
-        private string Decrypt(string cryptedPassword)
-        {
-            string decryptedPassword = null;
-
-
-
-            return decryptedPassword;
         }
     }
 }
