@@ -30,6 +30,7 @@ namespace AnnuaireEntreprise_2019
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Salarie = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -85,6 +86,24 @@ namespace AnnuaireEntreprise_2019
             this.button_SupprimerService = new System.Windows.Forms.Button();
             this.button_NouveauService = new System.Windows.Forms.Button();
             this.session = new DevExpress.Xpo.Session(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.connexionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConnecteToolStripMenuItem = new System.Windows.Forms.ToolStripTextBox();
+            this.sommaireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rechercherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.àproposdeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personnaliserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.annulerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rétablirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.couperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.collerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.sélectionnertoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xpView_Site = new DevExpress.Xpo.XPView(this.components);
             this.xpView_Service = new DevExpress.Xpo.XPView(this.components);
             this.tabControl1.SuspendLayout();
@@ -129,6 +148,7 @@ namespace AnnuaireEntreprise_2019
             this.splitContainer7.Panel2.SuspendLayout();
             this.splitContainer7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.session)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xpView_Site)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpView_Service)).BeginInit();
             this.SuspendLayout();
@@ -139,10 +159,10 @@ namespace AnnuaireEntreprise_2019
             this.tabControl1.Controls.Add(this.tabPage_Site);
             this.tabControl1.Controls.Add(this.tabPage_Service);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1371, 613);
+            this.tabControl1.Size = new System.Drawing.Size(1371, 583);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage_Salarie
@@ -151,7 +171,7 @@ namespace AnnuaireEntreprise_2019
             this.tabPage_Salarie.Location = new System.Drawing.Point(4, 25);
             this.tabPage_Salarie.Name = "tabPage_Salarie";
             this.tabPage_Salarie.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Salarie.Size = new System.Drawing.Size(1363, 584);
+            this.tabPage_Salarie.Size = new System.Drawing.Size(1363, 554);
             this.tabPage_Salarie.TabIndex = 0;
             this.tabPage_Salarie.Text = "Salaries";
             this.tabPage_Salarie.UseVisualStyleBackColor = true;
@@ -171,7 +191,7 @@ namespace AnnuaireEntreprise_2019
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1357, 578);
+            this.splitContainer1.Size = new System.Drawing.Size(1357, 548);
             this.splitContainer1.SplitterDistance = 177;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 1;
@@ -189,7 +209,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Filtre.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_Filtre.Location = new System.Drawing.Point(0, 0);
             this.groupBox_Filtre.Name = "groupBox_Filtre";
-            this.groupBox_Filtre.Size = new System.Drawing.Size(175, 576);
+            this.groupBox_Filtre.Size = new System.Drawing.Size(175, 546);
             this.groupBox_Filtre.TabIndex = 0;
             this.groupBox_Filtre.TabStop = false;
             this.groupBox_Filtre.Text = "Filtres";
@@ -287,8 +307,8 @@ namespace AnnuaireEntreprise_2019
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1170, 578);
-            this.splitContainer2.SplitterDistance = 937;
+            this.splitContainer2.Size = new System.Drawing.Size(1170, 548);
+            this.splitContainer2.SplitterDistance = 901;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -315,7 +335,7 @@ namespace AnnuaireEntreprise_2019
             this.dataGridView_Salarie.RowHeadersWidth = 51;
             this.dataGridView_Salarie.RowTemplate.Height = 24;
             this.dataGridView_Salarie.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Salarie.Size = new System.Drawing.Size(935, 576);
+            this.dataGridView_Salarie.Size = new System.Drawing.Size(899, 546);
             this.dataGridView_Salarie.TabIndex = 0;
             this.dataGridView_Salarie.SelectionChanged += new System.EventHandler(this.dataGridView_Salarie_SelectionChanged);
             // 
@@ -416,8 +436,8 @@ namespace AnnuaireEntreprise_2019
             this.splitContainer3.Panel2.Controls.Add(this.button_SauvegarderSalarie);
             this.splitContainer3.Panel2.Controls.Add(this.button_SupprimerSalarie);
             this.splitContainer3.Panel2.Controls.Add(this.button_NouveauSalarie);
-            this.splitContainer3.Size = new System.Drawing.Size(221, 576);
-            this.splitContainer3.SplitterDistance = 467;
+            this.splitContainer3.Size = new System.Drawing.Size(257, 546);
+            this.splitContainer3.SplitterDistance = 437;
             this.splitContainer3.TabIndex = 0;
             // 
             // groupBox_Service
@@ -426,7 +446,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Service.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_Service.Location = new System.Drawing.Point(0, 342);
             this.groupBox_Service.Name = "groupBox_Service";
-            this.groupBox_Service.Size = new System.Drawing.Size(221, 57);
+            this.groupBox_Service.Size = new System.Drawing.Size(257, 57);
             this.groupBox_Service.TabIndex = 6;
             this.groupBox_Service.TabStop = false;
             this.groupBox_Service.Text = "Service";
@@ -434,10 +454,11 @@ namespace AnnuaireEntreprise_2019
             // comboBox_Service
             // 
             this.comboBox_Service.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_Service.Enabled = false;
             this.comboBox_Service.FormattingEnabled = true;
             this.comboBox_Service.Location = new System.Drawing.Point(3, 18);
             this.comboBox_Service.Name = "comboBox_Service";
-            this.comboBox_Service.Size = new System.Drawing.Size(215, 24);
+            this.comboBox_Service.Size = new System.Drawing.Size(251, 24);
             this.comboBox_Service.TabIndex = 6;
             this.comboBox_Service.Tag = "Service";
             // 
@@ -447,7 +468,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Site.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_Site.Location = new System.Drawing.Point(0, 285);
             this.groupBox_Site.Name = "groupBox_Site";
-            this.groupBox_Site.Size = new System.Drawing.Size(221, 57);
+            this.groupBox_Site.Size = new System.Drawing.Size(257, 57);
             this.groupBox_Site.TabIndex = 5;
             this.groupBox_Site.TabStop = false;
             this.groupBox_Site.Text = "Site";
@@ -455,10 +476,11 @@ namespace AnnuaireEntreprise_2019
             // comboBox_Site
             // 
             this.comboBox_Site.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_Site.Enabled = false;
             this.comboBox_Site.FormattingEnabled = true;
             this.comboBox_Site.Location = new System.Drawing.Point(3, 18);
             this.comboBox_Site.Name = "comboBox_Site";
-            this.comboBox_Site.Size = new System.Drawing.Size(215, 24);
+            this.comboBox_Site.Size = new System.Drawing.Size(251, 24);
             this.comboBox_Site.TabIndex = 5;
             this.comboBox_Site.Tag = "Site";
             // 
@@ -468,7 +490,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Email.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_Email.Location = new System.Drawing.Point(0, 228);
             this.groupBox_Email.Name = "groupBox_Email";
-            this.groupBox_Email.Size = new System.Drawing.Size(221, 57);
+            this.groupBox_Email.Size = new System.Drawing.Size(257, 57);
             this.groupBox_Email.TabIndex = 4;
             this.groupBox_Email.TabStop = false;
             this.groupBox_Email.Text = "Email";
@@ -478,7 +500,8 @@ namespace AnnuaireEntreprise_2019
             this.textBox_Email.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_Email.Location = new System.Drawing.Point(3, 18);
             this.textBox_Email.Name = "textBox_Email";
-            this.textBox_Email.Size = new System.Drawing.Size(215, 22);
+            this.textBox_Email.ReadOnly = true;
+            this.textBox_Email.Size = new System.Drawing.Size(251, 22);
             this.textBox_Email.TabIndex = 4;
             this.textBox_Email.Tag = "Email";
             // 
@@ -488,7 +511,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_TelephonePortable.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_TelephonePortable.Location = new System.Drawing.Point(0, 171);
             this.groupBox_TelephonePortable.Name = "groupBox_TelephonePortable";
-            this.groupBox_TelephonePortable.Size = new System.Drawing.Size(221, 57);
+            this.groupBox_TelephonePortable.Size = new System.Drawing.Size(257, 57);
             this.groupBox_TelephonePortable.TabIndex = 3;
             this.groupBox_TelephonePortable.TabStop = false;
             this.groupBox_TelephonePortable.Text = "Téléphone portable";
@@ -498,7 +521,8 @@ namespace AnnuaireEntreprise_2019
             this.textBox_TelephonePortable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_TelephonePortable.Location = new System.Drawing.Point(3, 18);
             this.textBox_TelephonePortable.Name = "textBox_TelephonePortable";
-            this.textBox_TelephonePortable.Size = new System.Drawing.Size(215, 22);
+            this.textBox_TelephonePortable.ReadOnly = true;
+            this.textBox_TelephonePortable.Size = new System.Drawing.Size(251, 22);
             this.textBox_TelephonePortable.TabIndex = 3;
             this.textBox_TelephonePortable.Tag = "TelephonePortable";
             // 
@@ -508,7 +532,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_TelephoneFixe.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_TelephoneFixe.Location = new System.Drawing.Point(0, 114);
             this.groupBox_TelephoneFixe.Name = "groupBox_TelephoneFixe";
-            this.groupBox_TelephoneFixe.Size = new System.Drawing.Size(221, 57);
+            this.groupBox_TelephoneFixe.Size = new System.Drawing.Size(257, 57);
             this.groupBox_TelephoneFixe.TabIndex = 2;
             this.groupBox_TelephoneFixe.TabStop = false;
             this.groupBox_TelephoneFixe.Text = "Téléphone fixe";
@@ -518,7 +542,8 @@ namespace AnnuaireEntreprise_2019
             this.textBox_TelephoneFixe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_TelephoneFixe.Location = new System.Drawing.Point(3, 18);
             this.textBox_TelephoneFixe.Name = "textBox_TelephoneFixe";
-            this.textBox_TelephoneFixe.Size = new System.Drawing.Size(215, 22);
+            this.textBox_TelephoneFixe.ReadOnly = true;
+            this.textBox_TelephoneFixe.Size = new System.Drawing.Size(251, 22);
             this.textBox_TelephoneFixe.TabIndex = 2;
             this.textBox_TelephoneFixe.Tag = "TelephoneFixe";
             // 
@@ -528,7 +553,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Prenom.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_Prenom.Location = new System.Drawing.Point(0, 57);
             this.groupBox_Prenom.Name = "groupBox_Prenom";
-            this.groupBox_Prenom.Size = new System.Drawing.Size(221, 57);
+            this.groupBox_Prenom.Size = new System.Drawing.Size(257, 57);
             this.groupBox_Prenom.TabIndex = 1;
             this.groupBox_Prenom.TabStop = false;
             this.groupBox_Prenom.Text = "Prénom";
@@ -538,7 +563,8 @@ namespace AnnuaireEntreprise_2019
             this.textBox_Prenom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_Prenom.Location = new System.Drawing.Point(3, 18);
             this.textBox_Prenom.Name = "textBox_Prenom";
-            this.textBox_Prenom.Size = new System.Drawing.Size(215, 22);
+            this.textBox_Prenom.ReadOnly = true;
+            this.textBox_Prenom.Size = new System.Drawing.Size(251, 22);
             this.textBox_Prenom.TabIndex = 1;
             this.textBox_Prenom.Tag = "Prenom";
             // 
@@ -548,7 +574,7 @@ namespace AnnuaireEntreprise_2019
             this.groupBox_Nom.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_Nom.Location = new System.Drawing.Point(0, 0);
             this.groupBox_Nom.Name = "groupBox_Nom";
-            this.groupBox_Nom.Size = new System.Drawing.Size(221, 57);
+            this.groupBox_Nom.Size = new System.Drawing.Size(257, 57);
             this.groupBox_Nom.TabIndex = 0;
             this.groupBox_Nom.TabStop = false;
             this.groupBox_Nom.Text = "Nom";
@@ -558,7 +584,8 @@ namespace AnnuaireEntreprise_2019
             this.textBox_Nom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_Nom.Location = new System.Drawing.Point(3, 18);
             this.textBox_Nom.Name = "textBox_Nom";
-            this.textBox_Nom.Size = new System.Drawing.Size(215, 22);
+            this.textBox_Nom.ReadOnly = true;
+            this.textBox_Nom.Size = new System.Drawing.Size(251, 22);
             this.textBox_Nom.TabIndex = 0;
             this.textBox_Nom.Tag = "Nom";
             // 
@@ -567,10 +594,11 @@ namespace AnnuaireEntreprise_2019
             this.button_AnnulerSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_AnnulerSalarie.Location = new System.Drawing.Point(0, 69);
             this.button_AnnulerSalarie.Name = "button_AnnulerSalarie";
-            this.button_AnnulerSalarie.Size = new System.Drawing.Size(221, 23);
+            this.button_AnnulerSalarie.Size = new System.Drawing.Size(257, 23);
             this.button_AnnulerSalarie.TabIndex = 3;
             this.button_AnnulerSalarie.Text = "Annuler";
             this.button_AnnulerSalarie.UseVisualStyleBackColor = true;
+            this.button_AnnulerSalarie.Visible = false;
             this.button_AnnulerSalarie.Click += new System.EventHandler(this.button_Click);
             // 
             // button_SauvegarderSalarie
@@ -578,10 +606,11 @@ namespace AnnuaireEntreprise_2019
             this.button_SauvegarderSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_SauvegarderSalarie.Location = new System.Drawing.Point(0, 46);
             this.button_SauvegarderSalarie.Name = "button_SauvegarderSalarie";
-            this.button_SauvegarderSalarie.Size = new System.Drawing.Size(221, 23);
+            this.button_SauvegarderSalarie.Size = new System.Drawing.Size(257, 23);
             this.button_SauvegarderSalarie.TabIndex = 2;
             this.button_SauvegarderSalarie.Text = "Sauvegarder";
             this.button_SauvegarderSalarie.UseVisualStyleBackColor = true;
+            this.button_SauvegarderSalarie.Visible = false;
             this.button_SauvegarderSalarie.Click += new System.EventHandler(this.button_Click);
             // 
             // button_SupprimerSalarie
@@ -589,10 +618,11 @@ namespace AnnuaireEntreprise_2019
             this.button_SupprimerSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_SupprimerSalarie.Location = new System.Drawing.Point(0, 23);
             this.button_SupprimerSalarie.Name = "button_SupprimerSalarie";
-            this.button_SupprimerSalarie.Size = new System.Drawing.Size(221, 23);
+            this.button_SupprimerSalarie.Size = new System.Drawing.Size(257, 23);
             this.button_SupprimerSalarie.TabIndex = 1;
             this.button_SupprimerSalarie.Text = "Supprimer";
             this.button_SupprimerSalarie.UseVisualStyleBackColor = true;
+            this.button_SupprimerSalarie.Visible = false;
             this.button_SupprimerSalarie.Click += new System.EventHandler(this.button_Click);
             // 
             // button_NouveauSalarie
@@ -600,10 +630,11 @@ namespace AnnuaireEntreprise_2019
             this.button_NouveauSalarie.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_NouveauSalarie.Location = new System.Drawing.Point(0, 0);
             this.button_NouveauSalarie.Name = "button_NouveauSalarie";
-            this.button_NouveauSalarie.Size = new System.Drawing.Size(221, 23);
+            this.button_NouveauSalarie.Size = new System.Drawing.Size(257, 23);
             this.button_NouveauSalarie.TabIndex = 0;
             this.button_NouveauSalarie.Text = "Nouveau";
             this.button_NouveauSalarie.UseVisualStyleBackColor = true;
+            this.button_NouveauSalarie.Visible = false;
             this.button_NouveauSalarie.Click += new System.EventHandler(this.button_Click);
             // 
             // tabPage_Site
@@ -612,7 +643,7 @@ namespace AnnuaireEntreprise_2019
             this.tabPage_Site.Location = new System.Drawing.Point(4, 25);
             this.tabPage_Site.Name = "tabPage_Site";
             this.tabPage_Site.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Site.Size = new System.Drawing.Size(1363, 584);
+            this.tabPage_Site.Size = new System.Drawing.Size(1363, 556);
             this.tabPage_Site.TabIndex = 1;
             this.tabPage_Site.Text = "Sites";
             this.tabPage_Site.UseVisualStyleBackColor = true;
@@ -632,8 +663,8 @@ namespace AnnuaireEntreprise_2019
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
-            this.splitContainer4.Size = new System.Drawing.Size(1357, 578);
-            this.splitContainer4.SplitterDistance = 1024;
+            this.splitContainer4.Size = new System.Drawing.Size(1357, 550);
+            this.splitContainer4.SplitterDistance = 988;
             this.splitContainer4.SplitterWidth = 10;
             this.splitContainer4.TabIndex = 1;
             // 
@@ -652,7 +683,7 @@ namespace AnnuaireEntreprise_2019
             this.dataGridView_Site.RowHeadersWidth = 51;
             this.dataGridView_Site.RowTemplate.Height = 24;
             this.dataGridView_Site.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Site.Size = new System.Drawing.Size(1022, 576);
+            this.dataGridView_Site.Size = new System.Drawing.Size(986, 548);
             this.dataGridView_Site.TabIndex = 0;
             // 
             // Ville
@@ -675,8 +706,8 @@ namespace AnnuaireEntreprise_2019
             // 
             this.splitContainer5.Panel2.Controls.Add(this.button_SupprimerSite);
             this.splitContainer5.Panel2.Controls.Add(this.button_NouveauSite);
-            this.splitContainer5.Size = new System.Drawing.Size(321, 576);
-            this.splitContainer5.SplitterDistance = 467;
+            this.splitContainer5.Size = new System.Drawing.Size(357, 548);
+            this.splitContainer5.SplitterDistance = 439;
             this.splitContainer5.TabIndex = 0;
             // 
             // button_SupprimerSite
@@ -684,7 +715,7 @@ namespace AnnuaireEntreprise_2019
             this.button_SupprimerSite.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_SupprimerSite.Location = new System.Drawing.Point(0, 23);
             this.button_SupprimerSite.Name = "button_SupprimerSite";
-            this.button_SupprimerSite.Size = new System.Drawing.Size(321, 23);
+            this.button_SupprimerSite.Size = new System.Drawing.Size(357, 23);
             this.button_SupprimerSite.TabIndex = 1;
             this.button_SupprimerSite.Text = "Supprimer";
             this.button_SupprimerSite.UseVisualStyleBackColor = true;
@@ -695,7 +726,7 @@ namespace AnnuaireEntreprise_2019
             this.button_NouveauSite.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_NouveauSite.Location = new System.Drawing.Point(0, 0);
             this.button_NouveauSite.Name = "button_NouveauSite";
-            this.button_NouveauSite.Size = new System.Drawing.Size(321, 23);
+            this.button_NouveauSite.Size = new System.Drawing.Size(357, 23);
             this.button_NouveauSite.TabIndex = 0;
             this.button_NouveauSite.Text = "Nouveau";
             this.button_NouveauSite.UseVisualStyleBackColor = true;
@@ -707,7 +738,7 @@ namespace AnnuaireEntreprise_2019
             this.tabPage_Service.Location = new System.Drawing.Point(4, 25);
             this.tabPage_Service.Name = "tabPage_Service";
             this.tabPage_Service.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Service.Size = new System.Drawing.Size(1363, 584);
+            this.tabPage_Service.Size = new System.Drawing.Size(1363, 556);
             this.tabPage_Service.TabIndex = 2;
             this.tabPage_Service.Text = "Services";
             this.tabPage_Service.UseVisualStyleBackColor = true;
@@ -727,8 +758,8 @@ namespace AnnuaireEntreprise_2019
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.splitContainer7);
-            this.splitContainer6.Size = new System.Drawing.Size(1357, 578);
-            this.splitContainer6.SplitterDistance = 1024;
+            this.splitContainer6.Size = new System.Drawing.Size(1357, 550);
+            this.splitContainer6.SplitterDistance = 988;
             this.splitContainer6.SplitterWidth = 10;
             this.splitContainer6.TabIndex = 2;
             // 
@@ -747,7 +778,7 @@ namespace AnnuaireEntreprise_2019
             this.dataGridView_Service.RowHeadersWidth = 51;
             this.dataGridView_Service.RowTemplate.Height = 24;
             this.dataGridView_Service.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Service.Size = new System.Drawing.Size(1022, 576);
+            this.dataGridView_Service.Size = new System.Drawing.Size(986, 548);
             this.dataGridView_Service.TabIndex = 0;
             // 
             // nomDataGridViewTextBoxColumn1
@@ -770,8 +801,8 @@ namespace AnnuaireEntreprise_2019
             // 
             this.splitContainer7.Panel2.Controls.Add(this.button_SupprimerService);
             this.splitContainer7.Panel2.Controls.Add(this.button_NouveauService);
-            this.splitContainer7.Size = new System.Drawing.Size(321, 576);
-            this.splitContainer7.SplitterDistance = 467;
+            this.splitContainer7.Size = new System.Drawing.Size(357, 548);
+            this.splitContainer7.SplitterDistance = 439;
             this.splitContainer7.TabIndex = 0;
             // 
             // button_SupprimerService
@@ -779,7 +810,7 @@ namespace AnnuaireEntreprise_2019
             this.button_SupprimerService.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_SupprimerService.Location = new System.Drawing.Point(0, 23);
             this.button_SupprimerService.Name = "button_SupprimerService";
-            this.button_SupprimerService.Size = new System.Drawing.Size(321, 23);
+            this.button_SupprimerService.Size = new System.Drawing.Size(357, 23);
             this.button_SupprimerService.TabIndex = 1;
             this.button_SupprimerService.Text = "Supprimer";
             this.button_SupprimerService.UseVisualStyleBackColor = true;
@@ -790,11 +821,137 @@ namespace AnnuaireEntreprise_2019
             this.button_NouveauService.Dock = System.Windows.Forms.DockStyle.Top;
             this.button_NouveauService.Location = new System.Drawing.Point(0, 0);
             this.button_NouveauService.Name = "button_NouveauService";
-            this.button_NouveauService.Size = new System.Drawing.Size(321, 23);
+            this.button_NouveauService.Size = new System.Drawing.Size(357, 23);
             this.button_NouveauService.TabIndex = 0;
             this.button_NouveauService.Text = "Nouveau";
             this.button_NouveauService.UseVisualStyleBackColor = true;
             this.button_NouveauService.Click += new System.EventHandler(this.button_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.connexionToolStripMenuItem,
+            this.ConnecteToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1371, 30);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // connexionToolStripMenuItem
+            // 
+            this.connexionToolStripMenuItem.Name = "connexionToolStripMenuItem";
+            this.connexionToolStripMenuItem.Size = new System.Drawing.Size(93, 26);
+            this.connexionToolStripMenuItem.Text = "&Connexion";
+            this.connexionToolStripMenuItem.Click += new System.EventHandler(this.connexionToolStripMenuItem_Click);
+            // 
+            // ConnecteToolStripMenuItem
+            // 
+            this.ConnecteToolStripMenuItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ConnecteToolStripMenuItem.Enabled = false;
+            this.ConnecteToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ConnecteToolStripMenuItem.Name = "ConnecteToolStripMenuItem";
+            this.ConnecteToolStripMenuItem.Size = new System.Drawing.Size(500, 26);
+            this.ConnecteToolStripMenuItem.Text = "Non connecté";
+            // 
+            // sommaireToolStripMenuItem
+            // 
+            this.sommaireToolStripMenuItem.Name = "sommaireToolStripMenuItem";
+            this.sommaireToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.sommaireToolStripMenuItem.Text = "&Sommaire";
+            // 
+            // indexToolStripMenuItem
+            // 
+            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.indexToolStripMenuItem.Text = "&Index";
+            // 
+            // rechercherToolStripMenuItem
+            // 
+            this.rechercherToolStripMenuItem.Name = "rechercherToolStripMenuItem";
+            this.rechercherToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.rechercherToolStripMenuItem.Text = "&Rechercher";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 6);
+            // 
+            // àproposdeToolStripMenuItem
+            // 
+            this.àproposdeToolStripMenuItem.Name = "àproposdeToolStripMenuItem";
+            this.àproposdeToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.àproposdeToolStripMenuItem.Text = "À &propos de...";
+            // 
+            // personnaliserToolStripMenuItem
+            // 
+            this.personnaliserToolStripMenuItem.Name = "personnaliserToolStripMenuItem";
+            this.personnaliserToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.personnaliserToolStripMenuItem.Text = "&Personnaliser";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.optionsToolStripMenuItem.Text = "&Options";
+            // 
+            // annulerToolStripMenuItem
+            // 
+            this.annulerToolStripMenuItem.Name = "annulerToolStripMenuItem";
+            this.annulerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.annulerToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.annulerToolStripMenuItem.Text = "&Annuler";
+            // 
+            // rétablirToolStripMenuItem
+            // 
+            this.rétablirToolStripMenuItem.Name = "rétablirToolStripMenuItem";
+            this.rétablirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.rétablirToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.rétablirToolStripMenuItem.Text = "&Rétablir";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 6);
+            // 
+            // couperToolStripMenuItem
+            // 
+            this.couperToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("couperToolStripMenuItem.Image")));
+            this.couperToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.couperToolStripMenuItem.Name = "couperToolStripMenuItem";
+            this.couperToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.couperToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.couperToolStripMenuItem.Text = "&Couper";
+            // 
+            // copierToolStripMenuItem
+            // 
+            this.copierToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copierToolStripMenuItem.Image")));
+            this.copierToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.copierToolStripMenuItem.Name = "copierToolStripMenuItem";
+            this.copierToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copierToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.copierToolStripMenuItem.Text = "Co&pier";
+            // 
+            // collerToolStripMenuItem
+            // 
+            this.collerToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("collerToolStripMenuItem.Image")));
+            this.collerToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.collerToolStripMenuItem.Name = "collerToolStripMenuItem";
+            this.collerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.collerToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.collerToolStripMenuItem.Text = "Co&ller";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 6);
+            // 
+            // sélectionnertoutToolStripMenuItem
+            // 
+            this.sélectionnertoutToolStripMenuItem.Name = "sélectionnertoutToolStripMenuItem";
+            this.sélectionnertoutToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.sélectionnertoutToolStripMenuItem.Text = "Sélectio&nner tout";
             // 
             // xpView_Site
             // 
@@ -818,6 +975,8 @@ namespace AnnuaireEntreprise_2019
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1371, 613);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Annuaire";
             this.tabControl1.ResumeLayout(false);
@@ -868,9 +1027,12 @@ namespace AnnuaireEntreprise_2019
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
             this.splitContainer7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.session)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xpView_Site)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpView_Service)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -933,6 +1095,24 @@ namespace AnnuaireEntreprise_2019
         private System.Windows.Forms.Button button_SupprimerService;
         private System.Windows.Forms.Button button_NouveauService;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem connexionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sommaireToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rechercherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem àproposdeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem personnaliserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem annulerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rétablirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem couperToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copierToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem collerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem sélectionnertoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox ConnecteToolStripMenuItem;
     }
 }
 

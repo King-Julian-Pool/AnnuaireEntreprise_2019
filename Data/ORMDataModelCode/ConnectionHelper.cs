@@ -20,7 +20,8 @@ namespace Data
         static Type[] persistentTypes = new Type[] {
             typeof(Salarie),
             typeof(Service),
-            typeof(Site)
+            typeof(Site),
+            typeof(Utilisateur)
         };
         public static Type[] GetPersistentTypes()
         {

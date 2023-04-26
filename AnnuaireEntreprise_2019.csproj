@@ -97,6 +97,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnexionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnexionForm.Designer.cs">
+      <DependentUpon>ConnexionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\ORMDataModelCode\ConnectionHelper.cs" />
     <Compile Include="Data\ORMDataModelCode\Salarie.cs" />
     <Compile Include="Data\ORMDataModelCode\Salarie.Designer.cs">
@@ -110,6 +116,10 @@
     <Compile Include="Data\ORMDataModelCode\Site.Designer.cs">
       <DependentUpon>Site.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\ORMDataModelCode\Utilisateur.cs" />
+    <Compile Include="Data\ORMDataModelCode\Utilisateur.Designer.cs">
+      <DependentUpon>Utilisateur.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +128,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConnexionForm.resx">
+      <DependentUpon>ConnexionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

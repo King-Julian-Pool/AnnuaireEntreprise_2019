@@ -15,60 +15,68 @@ namespace AnnuaireEntreprise_2019
 {
     public partial class MainForm : Form
     {
-        XPCollection<Salarie> Salaries;
-        XPCollection<Site> Sites;
-        XPCollection<Service> Services;
-        public Control[] FormControls;
+        /// <summary>
+        /// Identifiant de l'utilisateur actuellement connecté
+        /// </summary>
+        public string utilisateurIdentifiant;
 
+        /// <summary>
+        /// Etat de connexion d'un utilisateur
+        /// </summary>
+        private bool _connecte { get; set; }
+        public bool connecte
+        {
+            get => _connecte;
+            set
+            {
+                _connecte = value;
+                this.ConnexionChanged();
+            }
+        }
+
+        /// <summary>
+        /// Mode administrateur permettant des accès spécifiques
+        /// </summary>
+        private bool _modeAdmin;
+        public bool modeAdmin {
+            get => _modeAdmin;
+            set => _modeAdmin = value;
+        }
+
+
+        /// <summary>
+        /// Editeurs du formulaire de détail des salariés
+        /// </summary>
+        public Control[] DetailFormControls;
+
+        /// <summary>
+        /// Salarie actuellement sélectionné dans la grile et dont les informations s'affichent dans le formulaire de détail
+        /// </summary>
         private Salarie _salarie;
         public Salarie Salarie
         {
             get => _salarie;
             set
             {
-                ClearDataBindings();
+                ClearDetailFormDataBindings();
 
                 _salarie = value;
 
                 if (_salarie != null)
                 {
-                    this.InitDataBindings();
+                    this.InitDetailFormDataBindings();
                 }
             }
         }
+
+        XPCollection<Salarie> Salaries;
+        XPCollection<Site> Sites;
+        XPCollection<Service> Services;
         public MainForm()
         {
             InitializeComponent();
 
-            this.dataGridView_Salarie.AutoGenerateColumns = false;
-            this.dataGridView_Site.AutoGenerateColumns = false;
-            this.dataGridView_Service.AutoGenerateColumns = false;
-
-            Salaries = new XPCollection<Salarie>(this.session);
-            this.dataGridView_Salarie.DataSource = Salaries;
-
-
-            Sites = new XPCollection<Site>(this.session);
-            ((ListBox)this.checkedListBox_Site).DataSource = Sites;
-            ((ListBox)this.checkedListBox_Site).DisplayMember = "Ville";
-            this.dataGridView_Site.DataSource = Sites;
-            Sites.ListChanged += ListChanged;
-
-            Services = new XPCollection<Service>(this.session);
-            ((ListBox)this.checkedListBox_Service).DataSource = Services;
-            ((ListBox)this.checkedListBox_Service).DisplayMember = "Nom";
-            this.dataGridView_Service.DataSource = Services;
-            Services.ListChanged += ListChanged;
-
-            this.comboBox_Site.DataSource = this.xpView_Site;
-            this.comboBox_Site.DisplayMember = "Ville";
-            this.comboBox_Site.ValueMember = "Oid";
-
-            this.comboBox_Service.DataSource = this.xpView_Service;
-            this.comboBox_Service.DisplayMember = "Nom";
-            this.comboBox_Service.ValueMember = "Oid";
-
-            this.FormControls = new Control[] {
+            this.DetailFormControls = new Control[] {
                 this.textBox_Nom,
                 this.textBox_Prenom,
                 this.textBox_TelephoneFixe,
@@ -77,20 +85,114 @@ namespace AnnuaireEntreprise_2019
                 this.comboBox_Site,
                 this.comboBox_Service
             };
+
+            this.connecte = false;
+            this.modeAdmin = false;
+
+            this.BindGridAndFilter();
         }
 
-        private void ListChanged(object sender, ListChangedEventArgs e)
+        /// <summary>
+        /// Changement de statut de connexion
+        /// </summary>
+        private void ConnexionChanged()
         {
-
-            if (sender == this.Sites)
+            if (connecte)
             {
-                this.xpView_Site.Reload();
-            }else if(sender == this.Services){
-                this.xpView_Service.Reload();
+                this.ConnecteToolStripMenuItem.Text = $"Connecté en tant que {this.utilisateurIdentifiant}";
+            }
+            else
+            {
+                if (this.modeAdmin)
+                {
+                    this.modeAdmin = false;
+                }
+                this.utilisateurIdentifiant = null;
+                this.ConnecteToolStripMenuItem.Text = $"Non connecté";
             }
 
-            this.Annuler();
+            // Pages de consultation et d'édition des sites et services
+            TabPage[] tabPages = new TabPage[] {
+                this.tabPage_Site,
+                this.tabPage_Service
+            };
+
+            // Boutons concernants l'ajout, la supression, la modification des salariés
+            Button[] salarieButtons = new Button[] {
+                this.button_NouveauSalarie,
+                this.button_SupprimerSalarie,
+                this.button_AnnulerSalarie,
+                this.button_SauvegarderSalarie
+            };
+
+            if (modeAdmin)
+            {
+                // On affiche les onglets et pages
+                foreach (TabPage tabPage in tabPages)
+                {
+                    if (!this.tabControl1.TabPages.Contains(tabPage))
+                    {
+                        this.tabControl1.TabPages.Add(tabPage);
+                    }
+                }
+
+                // On permet l'édition des editeurs
+                foreach (Control control in this.DetailFormControls)
+                {
+                    if (control is TextBox)
+                    {
+                        ((TextBox)control).ReadOnly = false;
+                    }
+                    else if (control is ComboBox)
+                    {
+                        ((ComboBox)control).Enabled = true;
+                    }
+                }
+
+                // On affiche les boutons d'édition des salaries
+                foreach (Button button in salarieButtons)
+                {
+                    button.Visible = true;
+                }
+            }
+            else
+            {
+                // On masque les onglets et pages
+                foreach (TabPage tabPage in tabPages)
+                {
+                    if (this.tabControl1.TabPages.Contains(tabPage))
+                    {
+                        this.tabControl1.TabPages.Remove(tabPage);
+                    }
+                }
+
+                // On empêche l'édition des editeurs
+                foreach (Control control in this.DetailFormControls)
+                {
+                    if (control is TextBox)
+                    {
+                        ((TextBox)control).ReadOnly = true;
+                    }
+                    else if (control is ComboBox)
+                    {
+                        ((ComboBox)control).Enabled = false;
+                    }
+                }
+
+                // On masque les boutons d'édition des salaries
+                foreach (Button button in salarieButtons)
+                {
+                    button.Visible = false;
+                }
+            }
         }
+
+        #region " Evénements et méthodes liés aux boutons "
+        /// <summary>
+        /// Se déclenche lors du click d'un bouton
+        /// </summary>
+        /// <param name="sender">Le bouton cliqué</param>
+        /// <param name="e"></param>
         private void button_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -109,7 +211,7 @@ namespace AnnuaireEntreprise_2019
                         SauvegarderSalarie();
                         break;
                     case "button_AnnulerSalarie":
-                        Annuler();
+                        ResetSalarie();
                         break;
                     case "button_ReinitialiserFiltre":
                         ReinitialiserFiltre();
@@ -130,6 +232,36 @@ namespace AnnuaireEntreprise_2019
             }
         }
 
+        /// <summary>
+        /// Se déclenche lors du clik du bouton de Connexion/Deconnexion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void connexionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.connecte)
+            {
+                this.connecte = false;
+                this.modeAdmin = false;
+                this.utilisateurIdentifiant = null;
+                this.connexionToolStripMenuItem.Text = "Connexion";
+            }
+            else
+            {
+                Form form = new ConnexionForm(this.session, this);
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.ShowDialog(this);
+                if (this.connecte)
+                {
+                    this.connexionToolStripMenuItem.Text = "Déconnexion";
+                }
+            }
+        }
+
+        #region " Salarie "
+        /// <summary>
+        /// Ajout d'un salarie
+        /// </summary>
         private void NouveauSalarie()
         {
             Salarie salarie = new Salarie(this.session);
@@ -141,6 +273,9 @@ namespace AnnuaireEntreprise_2019
             this.dataGridView_Salarie.Rows[this.Salaries.IndexOf(salarie)].Selected = true;
         }
 
+        /// <summary>
+        /// Supression du salarie selectionné dans la grile
+        /// </summary>
         private void SupprimerSalarie()
         {
             if (dataGridView_Salarie.SelectedRows.Count > 0)
@@ -161,6 +296,9 @@ namespace AnnuaireEntreprise_2019
             }
         }
 
+        /// <summary>
+        /// Enregistrement des modifications apportées au salarie selectionné dans la grille
+        /// </summary>
         private void SauvegarderSalarie()
         {
             if (dataGridView_Salarie.SelectedRows.Count > 0)
@@ -169,10 +307,9 @@ namespace AnnuaireEntreprise_2019
 
                 if (row != null)
                 {
-
-                    if (this._salarie != null && this.FormControls != null)
+                    if (this._salarie != null && this.DetailFormControls != null)
                     {
-                        foreach (Control control in this.FormControls)
+                        foreach (Control control in this.DetailFormControls)
                         {
                             if (control?.Tag != null && this._salarie != null)
                             {
@@ -242,14 +379,16 @@ namespace AnnuaireEntreprise_2019
                                 }
                             }
                         }
-
                         this._salarie.Save();
                     }
                 }
             }
         }
 
-        private void Annuler()
+        /// <summary>
+        /// Annulation des modifications en cours pour le salarié sélectionné dans la grille
+        /// </summary>
+        private void ResetSalarie()
         {
             if (dataGridView_Salarie.SelectedRows.Count > 0)
             {
@@ -267,36 +406,12 @@ namespace AnnuaireEntreprise_2019
             }
         }
 
-        private void ReinitialiserFiltre()
-        {
-            this.textBox_NomPrenom.Text = string.Empty;
+        #endregion
 
-
-            for (int i = 0; i < this.checkedListBox_Site.Items.Count; i++)
-            {
-                this.checkedListBox_Site.SetItemChecked(i, false);
-            }
-
-            foreach (Site site in Sites)
-            {
-                if (site.IsChecked)
-                {
-                    site.IsChecked = false;
-                }
-            }
-
-            foreach (Service service in this.Services)
-            {
-                if (service.IsChecked)
-                {
-                    service.IsChecked = false;
-                }
-            }
-
-            UpdateCriteria();
-
-        }
-
+        #region " Site "
+        /// <summary>
+        /// Ajout d'un site
+        /// </summary>
         private void NouveauSite()
         {
             Site site = new Site(this.session);
@@ -309,6 +424,9 @@ namespace AnnuaireEntreprise_2019
             this.dataGridView_Site.Rows[this.Sites.IndexOf(site)].Selected = true;
         }
 
+        /// <summary>
+        /// Supression d'un site
+        /// </summary>
         private void SupprimerSite()
         {
             if (dataGridView_Site.SelectedRows.Count > 0)
@@ -322,20 +440,26 @@ namespace AnnuaireEntreprise_2019
                     if (site != null)
                     {
 
-                        if (Salaries.Any(s=> s.Site != null && s.Site.Oid == site.Oid)){
-                            MessageBox.Show(this,$"Impssible de supprimer le site {site.Ville}. Au moins un salarié y est affecté.","Suppression impossible");
+                        if (Salaries.Any(s => s.Site != null && s.Site.Oid == site.Oid))
+                        {
+                            /// Si le site est affecté à un salarié on affiche un message d'erreur
+                            MessageBox.Show(this, $"Impssible de supprimer le site {site.Ville}. Au moins un salarié y est affecté.", "Suppression impossible");
                         }
                         else
                         {
-                        row.Dispose();
-                        site.Delete();
-                        this.Sites.Reload();
+                            row.Dispose();
+                            site.Delete();
+                            this.Sites.Reload();
                         }
                     }
                 }
             }
         }
-
+        #endregion
+        #region " Service "
+        /// <summary>
+        /// Ajout d'un service
+        /// </summary>
         private void NouveauService()
         {
             Service service = new Service(this.session);
@@ -348,6 +472,9 @@ namespace AnnuaireEntreprise_2019
             this.dataGridView_Service.Rows[this.Services.IndexOf(service)].Selected = true;
         }
 
+        /// <summary>
+        /// Suppression d'un service
+        /// </summary>
         private void SupprimerService()
         {
             if (dataGridView_Service.SelectedRows.Count > 0)
@@ -362,6 +489,7 @@ namespace AnnuaireEntreprise_2019
                     {
                         if (Salaries.Any(s => s.Service != null && s.Service.Oid == service.Oid))
                         {
+                            /// Si le service est affecté à un salarié on affiche un message d'erreur
                             MessageBox.Show(this, $"Impssible de supprimer le service {service.Nom}. Au moins un salarié y est affecté.", "Suppression impossible");
                         }
                         else
@@ -374,20 +502,72 @@ namespace AnnuaireEntreprise_2019
                 }
             }
         }
+        #endregion
 
+        #region " Filtre "
+        /// <summary>
+        /// Réinitialisation du filtre
+        /// </summary>
+        private void ReinitialiserFiltre()
+        {
+            // On vide la barre de recherche du Nom/Prénom
+            this.textBox_NomPrenom.Text = string.Empty;
+
+            // On décoche tous les éléments de filtre
+            CheckedListBox[] checkedListBoxes = new CheckedListBox[] { this.checkedListBox_Site, this.checkedListBox_Service };
+            foreach (CheckedListBox checkedListBox in checkedListBoxes)
+            {
+                for (int i = 0; i < checkedListBox.Items.Count; i++)
+                {
+                    checkedListBox.SetItemChecked(i, false);
+                }
+            }
+
+            // On marque tous les sites comme décochés
+            foreach (Site site in Sites)
+            {
+                if (site.IsChecked)
+                {
+                    site.IsChecked = false;
+                }
+            }
+
+            // On marque tous les services comme décochés
+            foreach (Service service in this.Services)
+            {
+                if (service.IsChecked)
+                {
+                    service.IsChecked = false;
+                }
+            }
+
+            UpdateCriteria();
+        }
+        #endregion
+        #endregion
+
+        #region " Evenements et méthodes liés au filtre "
+        /// <summary>
+        /// Se déclenche lors du changement de texte du filtre Nom/Prénom
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox_NomPrenom_TextChanged(object sender, EventArgs e)
         {
             UpdateCriteria();
         }
 
+        /// <summary>
+        /// Se déclenche lorsqu'un élement de CheckListBox est coché ou décoché
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-
             CheckedListBox checkedListBox = sender as CheckedListBox;
 
             if (checkedListBox != null)
             {
-
                 switch (checkedListBox.Name)
                 {
                     case "checkedListBox_Site":
@@ -398,12 +578,15 @@ namespace AnnuaireEntreprise_2019
                         ((Service)checkedListBox.Items[e.Index]).IsChecked = e.NewValue == CheckState.Checked;
                         break;
                 }
-
             }
 
             UpdateCriteria();
 
         }
+
+        /// <summary>
+        /// Actualisation du filtre de la grille des salariés
+        /// </summary>
         private void UpdateCriteria()
         {
             CriteriaOperator NomPrenomOp = null;
@@ -413,7 +596,6 @@ namespace AnnuaireEntreprise_2019
                 var PrenomOp = DevExpress.Data.Filtering.CriteriaOperator.Parse($"Contains(Lower([{nameof(Salarie.Prenom)}]), ?)", textBox_NomPrenom.Text.ToLower());
                 NomPrenomOp = CriteriaOperator.Or(NomOp, PrenomOp);
             }
-
 
             BinaryOperator SiteOp = null;
             foreach (Site site in this.Sites)
@@ -439,7 +621,14 @@ namespace AnnuaireEntreprise_2019
 
             this.Salaries.Criteria = criteria;
         }
+        #endregion
 
+        #region " Evénements liés aux grilles "
+        /// <summary>
+        /// Se déclenche lors du changement de ligne sélectionnée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView_Salarie_SelectionChanged(object sender, EventArgs e)
         {
             DataGridView dataGridView = (DataGridView)sender;
@@ -459,13 +648,50 @@ namespace AnnuaireEntreprise_2019
                 }
             }
         }
+        #endregion
 
+        #region " DataBinding "
 
-        private void ClearDataBindings()
+        /// <summary>
+        /// Bind des grilles et des élements de filtres
+        /// </summary>
+        private void BindGridAndFilter()
         {
-            if (this.FormControls != null)
+            // On désactive la création automatique de colonnes dans les grilles sur le changement de source de donnée
+            this.dataGridView_Salarie.AutoGenerateColumns = false;
+            this.dataGridView_Site.AutoGenerateColumns = false;
+            this.dataGridView_Service.AutoGenerateColumns = false;
+
+            Salaries = new XPCollection<Salarie>(this.session);
+            this.dataGridView_Salarie.DataSource = Salaries;
+
+            Sites = new XPCollection<Site>(this.session);
+            ((ListBox)this.checkedListBox_Site).DataSource = Sites;
+            ((ListBox)this.checkedListBox_Site).DisplayMember = "Ville";
+            this.dataGridView_Site.DataSource = Sites;
+            Sites.ListChanged += ListChanged;
+
+            Services = new XPCollection<Service>(this.session);
+            ((ListBox)this.checkedListBox_Service).DataSource = Services;
+            ((ListBox)this.checkedListBox_Service).DisplayMember = "Nom";
+            this.dataGridView_Service.DataSource = Services;
+            Services.ListChanged += ListChanged;
+
+            this.comboBox_Site.DataSource = this.xpView_Site;
+            this.comboBox_Site.DisplayMember = "Ville";
+            this.comboBox_Site.ValueMember = "Oid";
+
+            this.comboBox_Service.DataSource = this.xpView_Service;
+            this.comboBox_Service.DisplayMember = "Nom";
+            this.comboBox_Service.ValueMember = "Oid";
+        }
+
+        #region " Formulaire de détail des salariés "
+        private void ClearDetailFormDataBindings()
+        {
+            if (this.DetailFormControls != null)
             {
-                foreach (Control control in this.FormControls)
+                foreach (Control control in this.DetailFormControls)
                 {
                     if (control.GetType() == typeof(TextBox))
                     {
@@ -479,11 +705,11 @@ namespace AnnuaireEntreprise_2019
             }
         }
 
-        private void InitDataBindings()
+        private void InitDetailFormDataBindings()
         {
-            if (this.FormControls != null)
+            if (this.DetailFormControls != null)
             {
-                foreach (Control control in this.FormControls)
+                foreach (Control control in this.DetailFormControls)
                 {
                     if (control?.Tag != null && _salarie != null)
                     {
@@ -523,5 +749,31 @@ namespace AnnuaireEntreprise_2019
                 }
             }
         }
+
+        #endregion
+        #endregion
+
+        #region " Evénements liés aux sources de données "
+        /// <summary>
+        /// Se déclenche lors de l'ajout, la supression ou la modification d'un élément d'une liste
+        /// </summary>
+        /// <param name="sender">La liste modifiée</param>
+        /// <param name="e"></param>
+        private void ListChanged(object sender, ListChangedEventArgs e)
+        {
+            // On actualise les XpView pour synchroniser les modifications
+            if (sender == this.Sites)
+            {
+                this.xpView_Site.Reload();
+            }
+            else if (sender == this.Services)
+            {
+                this.xpView_Service.Reload();
+            }
+
+            // On réinitialise le formulaire de détail à partir du salarié sélectionné
+            this.ResetSalarie();
+        }
+        #endregion
     }
 }
