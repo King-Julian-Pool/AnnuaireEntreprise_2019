@@ -1146,6 +1146,7 @@ namespace AnnuaireEntreprise_2019
             this.ClientSize = new System.Drawing.Size(1371, 613);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "Annuaire";
