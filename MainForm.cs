@@ -496,7 +496,7 @@ namespace AnnuaireEntreprise_2019
                         if (Salaries.Any(s => s.Site != null && s.Site.Oid == site.Oid))
                         {
                             /// Si le site est affecté à un salarié on affiche un message d'erreur
-                            MessageBox.Show(this, $"Impssible de supprimer le site {site.Ville}. Au moins un salarié y est affecté.", "Suppression impossible", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, $"Impossible de supprimer le site {site.Ville}. Au moins un salarié y est affecté.", "Suppression impossible", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -543,7 +543,7 @@ namespace AnnuaireEntreprise_2019
                         if (Salaries.Any(s => s.Service != null && s.Service.Oid == service.Oid))
                         {
                             /// Si le service est affecté à un salarié on affiche un message d'erreur
-                            MessageBox.Show(this, $"Impssible de supprimer le service {service.Nom}. Au moins un salarié y est affecté.", "Suppression impossible", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, $"Impossible de supprimer le service {service.Nom}. Au moins un salarié y est affecté.", "Suppression impossible", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
