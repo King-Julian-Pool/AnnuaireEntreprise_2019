@@ -30,13 +30,13 @@ namespace AnnuaireEntreprise_2019
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label_Erreur = new System.Windows.Forms.Label();
             this.button_Fermer = new System.Windows.Forms.Button();
             this.button_Valider = new System.Windows.Forms.Button();
             this.textBox_MotDePasse = new System.Windows.Forms.TextBox();
             this.label_MotDePasse = new System.Windows.Forms.Label();
             this.textBox_Identifiant = new System.Windows.Forms.TextBox();
             this.label_Identifiant = new System.Windows.Forms.Label();
-            this.label_Erreur = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +54,16 @@ namespace AnnuaireEntreprise_2019
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(434, 180);
             this.panel1.TabIndex = 0;
+            // 
+            // label_Erreur
+            // 
+            this.label_Erreur.AutoSize = true;
+            this.label_Erreur.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Erreur.ForeColor = System.Drawing.Color.Red;
+            this.label_Erreur.Location = new System.Drawing.Point(27, 112);
+            this.label_Erreur.Name = "label_Erreur";
+            this.label_Erreur.Size = new System.Drawing.Size(0, 15);
+            this.label_Erreur.TabIndex = 6;
             // 
             // button_Fermer
             // 
@@ -81,6 +91,7 @@ namespace AnnuaireEntreprise_2019
             this.textBox_MotDePasse.Name = "textBox_MotDePasse";
             this.textBox_MotDePasse.Size = new System.Drawing.Size(273, 22);
             this.textBox_MotDePasse.TabIndex = 3;
+            this.textBox_MotDePasse.UseSystemPasswordChar = true;
             // 
             // label_MotDePasse
             // 
@@ -106,16 +117,6 @@ namespace AnnuaireEntreprise_2019
             this.label_Identifiant.Size = new System.Drawing.Size(69, 17);
             this.label_Identifiant.TabIndex = 0;
             this.label_Identifiant.Text = "Identifiant";
-            // 
-            // label_Erreur
-            // 
-            this.label_Erreur.AutoSize = true;
-            this.label_Erreur.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Erreur.ForeColor = System.Drawing.Color.Red;
-            this.label_Erreur.Location = new System.Drawing.Point(27, 112);
-            this.label_Erreur.Name = "label_Erreur";
-            this.label_Erreur.Size = new System.Drawing.Size(0, 15);
-            this.label_Erreur.TabIndex = 6;
             // 
             // ConnexionForm
             // 

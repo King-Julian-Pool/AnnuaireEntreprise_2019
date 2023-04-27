@@ -38,7 +38,8 @@ namespace AnnuaireEntreprise_2019
         /// Mode administrateur permettant des accès spécifiques
         /// </summary>
         private bool _modeAdmin;
-        public bool modeAdmin {
+        public bool modeAdmin
+        {
             get => _modeAdmin;
             set => _modeAdmin = value;
         }
@@ -72,6 +73,8 @@ namespace AnnuaireEntreprise_2019
         XPCollection<Salarie> Salaries;
         XPCollection<Site> Sites;
         XPCollection<Service> Services;
+        XPCollection<Utilisateur> Utilisateurs;
+
         public MainForm()
         {
             InitializeComponent();
@@ -99,7 +102,7 @@ namespace AnnuaireEntreprise_2019
         {
             if (connecte)
             {
-                this.ConnecteToolStripMenuItem.Text = $"Connecté en tant que {this.utilisateurIdentifiant}";
+                this.ToolStripMenuItem_ConnexionStatut.Text = $"Connecté en tant que {this.utilisateurIdentifiant}";
             }
             else
             {
@@ -108,13 +111,14 @@ namespace AnnuaireEntreprise_2019
                     this.modeAdmin = false;
                 }
                 this.utilisateurIdentifiant = null;
-                this.ConnecteToolStripMenuItem.Text = $"Non connecté";
+                this.ToolStripMenuItem_ConnexionStatut.Text = $"Non connecté";
             }
 
             // Pages de consultation et d'édition des sites et services
             TabPage[] tabPages = new TabPage[] {
                 this.tabPage_Site,
-                this.tabPage_Service
+                this.tabPage_Service,
+                this.tabPage_Utilisateurs
             };
 
             // Boutons concernants l'ajout, la supression, la modification des salariés
@@ -201,32 +205,38 @@ namespace AnnuaireEntreprise_2019
             {
                 switch (button.Name)
                 {
-                    case "button_NouveauSalarie":
+                    case nameof(this.button_NouveauSalarie):
                         NouveauSalarie();
                         break;
-                    case "button_SupprimerSalarie":
+                    case nameof(this.button_SupprimerSalarie):
                         SupprimerSalarie();
                         break;
-                    case "button_SauvegarderSalarie":
+                    case nameof(this.button_SauvegarderSalarie):
                         SauvegarderSalarie();
                         break;
-                    case "button_AnnulerSalarie":
+                    case nameof(this.button_AnnulerSalarie):
                         ResetSalarie();
                         break;
-                    case "button_ReinitialiserFiltre":
+                    case nameof(this.button_ReinitialiserFiltre):
                         ReinitialiserFiltre();
                         break;
-                    case "button_NouveauSite":
+                    case nameof(this.button_NouveauSite):
                         NouveauSite();
                         break;
-                    case "button_SupprimerSite":
+                    case nameof(this.button_SupprimerSite):
                         SupprimerSite();
                         break;
-                    case "button_NouveauService":
+                    case nameof(this.button_NouveauService):
                         NouveauService();
                         break;
-                    case "button_SupprimerService":
+                    case nameof(this.button_SupprimerService):
                         SupprimerService();
+                        break;
+                    case nameof(this.button_NouveauUtilisateur):
+                        NouveauUtilisateur();
+                        break;
+                    case nameof(this.button_SupprimerUtilisateur):
+                        SupprimerUtilisateur();
                         break;
                 }
             }
@@ -237,23 +247,48 @@ namespace AnnuaireEntreprise_2019
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void connexionToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.connecte)
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+
+            if (item != null)
             {
-                this.connecte = false;
-                this.modeAdmin = false;
-                this.utilisateurIdentifiant = null;
-                this.connexionToolStripMenuItem.Text = "Connexion";
-            }
-            else
-            {
-                Form form = new ConnexionForm(this.session, this);
-                form.StartPosition = FormStartPosition.CenterParent;
-                form.ShowDialog(this);
-                if (this.connecte)
+
+                switch (item.Name)
                 {
-                    this.connexionToolStripMenuItem.Text = "Déconnexion";
+                    case nameof(this.ToolStripMenuItem_Connexion):
+
+                        if (this.connecte)
+                        {
+                            this.connecte = false;
+                            this.modeAdmin = false;
+                            this.utilisateurIdentifiant = null;
+                            this.ToolStripMenuItem_Connexion.Text = "Connexion";
+                        }
+                        else
+                        {
+                            Form form = new ConnexionForm(this.session, this);
+                            form.StartPosition = FormStartPosition.CenterParent;
+                            form.ShowDialog(this);
+                            if (this.connecte)
+                            {
+                                this.ToolStripMenuItem_Connexion.Text = "Déconnexion";
+                            }
+                        }
+
+                        break;
+
+                    case nameof(this.toolStripMenuItem_Filtre):
+
+                        this.splitContainer1.Panel1Collapsed = !this.splitContainer1.Panel1Collapsed;
+
+                        break;
+
+                    case nameof(this.toolStripMenuItem_Detail):
+
+                        this.splitContainer2.Panel2Collapsed = !this.splitContainer2.Panel2Collapsed;
+
+                        break;
                 }
             }
         }
@@ -443,7 +478,7 @@ namespace AnnuaireEntreprise_2019
                         if (Salaries.Any(s => s.Site != null && s.Site.Oid == site.Oid))
                         {
                             /// Si le site est affecté à un salarié on affiche un message d'erreur
-                            MessageBox.Show(this, $"Impssible de supprimer le site {site.Ville}. Au moins un salarié y est affecté.", "Suppression impossible");
+                            MessageBox.Show(this, $"Impssible de supprimer le site {site.Ville}. Au moins un salarié y est affecté.", "Suppression impossible", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -490,7 +525,7 @@ namespace AnnuaireEntreprise_2019
                         if (Salaries.Any(s => s.Service != null && s.Service.Oid == service.Oid))
                         {
                             /// Si le service est affecté à un salarié on affiche un message d'erreur
-                            MessageBox.Show(this, $"Impssible de supprimer le service {service.Nom}. Au moins un salarié y est affecté.", "Suppression impossible");
+                            MessageBox.Show(this, $"Impssible de supprimer le service {service.Nom}. Au moins un salarié y est affecté.", "Suppression impossible", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -498,6 +533,41 @@ namespace AnnuaireEntreprise_2019
                             service.Delete();
                             this.Services.Reload();
                         }
+                    }
+                }
+            }
+        }
+
+        private void NouveauUtilisateur()
+        {
+            Utilisateur service = new Utilisateur(this.session);
+
+            service.Save();
+
+            this.Utilisateurs.Reload();
+            this.Utilisateurs.Reload();
+
+            this.dataGridView_Utilisateur.Rows[this.Utilisateurs.IndexOf(service)].Selected = true;
+        }
+
+        /// <summary>
+        /// Suppression d'un service
+        /// </summary>
+        private void SupprimerUtilisateur()
+        {
+            if (dataGridView_Utilisateur.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridView_Utilisateur.SelectedRows[0];
+
+                if (row != null)
+                {
+                    Utilisateur service = row.DataBoundItem as Utilisateur;
+
+                    if (service != null)
+                    {
+                        row.Dispose();
+                        service.Delete();
+                        this.Utilisateurs.Reload();
                     }
                 }
             }
@@ -661,6 +731,7 @@ namespace AnnuaireEntreprise_2019
             this.dataGridView_Salarie.AutoGenerateColumns = false;
             this.dataGridView_Site.AutoGenerateColumns = false;
             this.dataGridView_Service.AutoGenerateColumns = false;
+            this.dataGridView_Utilisateur.AutoGenerateColumns = false;
 
             Salaries = new XPCollection<Salarie>(this.session);
             this.dataGridView_Salarie.DataSource = Salaries;
@@ -684,6 +755,9 @@ namespace AnnuaireEntreprise_2019
             this.comboBox_Service.DataSource = this.xpView_Service;
             this.comboBox_Service.DisplayMember = "Nom";
             this.comboBox_Service.ValueMember = "Oid";
+
+            Utilisateurs = new XPCollection<Utilisateur>(this.session);
+            this.dataGridView_Utilisateur.DataSource = Utilisateurs;
         }
 
         #region " Formulaire de détail des salariés "

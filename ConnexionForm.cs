@@ -55,16 +55,24 @@ namespace AnnuaireEntreprise_2019
 
                 if (this.parentMainForm is MainForm)
                 {
-                    if (utilisateur != null && BCrypt.Net.BCrypt.Verify(string.Format("{0}.{1}", MotDePasse, Program.SecretKey),utilisateur.MotDePasse))
+                    try
                     {
-                        parentMainForm.utilisateurIdentifiant = utilisateur.Identifiant;
-                        parentMainForm.modeAdmin = utilisateur.Admin;
-                        parentMainForm.connecte = true;
-                        this.Close();
+                        if (utilisateur != null && BCrypt.Net.BCrypt.Verify(string.Format("{0}.{1}", MotDePasse, Program.SecretKey), utilisateur.MotDePasse))
+                        {
+                            parentMainForm.utilisateurIdentifiant = utilisateur.Identifiant;
+                            parentMainForm.modeAdmin = utilisateur.Admin;
+                            parentMainForm.connecte = true;
+                            this.Close();
+                        }
+                        else
+                        {
+                            this.label_Erreur.Text = "Identifiant ou mot de passe incorrect";
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
                         this.label_Erreur.Text = "Identifiant ou mot de passe incorrect";
+                        Console.WriteLine($"Erreur : {ex.Message}");
                     }
                 }
             }
