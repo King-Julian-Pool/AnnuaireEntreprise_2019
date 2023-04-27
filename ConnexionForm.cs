@@ -25,6 +25,12 @@ namespace AnnuaireEntreprise_2019
             this.parentMainForm = parentMainForm;
         }
 
+        #region " Evénements et méthodes liés aux boutons "
+        /// <summary>
+        /// Se déclenche lors du click d'un bouton
+        /// </summary>
+        /// <param name="sender">Le bouton cliqué</param>
+        /// <param name="e"></param>
         private void button_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -42,6 +48,9 @@ namespace AnnuaireEntreprise_2019
                 }
             }
         }
+        #endregion
+
+        #region " Connexion "
         private void Connexion()
         {
             string identifiant = this.textBox_Identifiant.Text;
@@ -81,5 +90,6 @@ namespace AnnuaireEntreprise_2019
                 this.label_Erreur.Text = "Veuillez renseigner un identifiant et un mot de passe";
             }
         }
+        #endregion
     }
 }

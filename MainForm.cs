@@ -95,6 +95,7 @@ namespace AnnuaireEntreprise_2019
             this.BindGridAndFilter();
         }
 
+        #region " Connexion "
         /// <summary>
         /// Changement de statut de connexion
         /// </summary>
@@ -190,6 +191,7 @@ namespace AnnuaireEntreprise_2019
                 }
             }
         }
+        #endregion
 
         #region " Evénements et méthodes liés aux boutons "
         /// <summary>
