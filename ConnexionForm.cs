@@ -15,8 +15,12 @@ namespace AnnuaireEntreprise_2019
 {
     public partial class ConnexionForm : Form
     {
+        #region " Propriétés "
         Session session;
         MainForm parentMainForm;
+        #endregion
+
+        #region " Constructeur "
         public ConnexionForm(Session session, MainForm parentMainForm)
         {
             InitializeComponent();
@@ -24,6 +28,7 @@ namespace AnnuaireEntreprise_2019
             this.session = session;
             this.parentMainForm = parentMainForm;
         }
+        #endregion
 
         #region " Evénements et méthodes liés aux boutons "
         /// <summary>

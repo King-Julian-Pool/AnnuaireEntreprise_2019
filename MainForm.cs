@@ -15,6 +15,7 @@ namespace AnnuaireEntreprise_2019
 {
     public partial class MainForm : Form
     {
+        #region " Propriétés "
         /// <summary>
         /// Identifiant de l'utilisateur actuellement connecté
         /// </summary>
@@ -75,6 +76,9 @@ namespace AnnuaireEntreprise_2019
         XPCollection<Service> Services;
         XPCollection<Utilisateur> Utilisateurs;
 
+        #endregion
+
+        #region " Constructeur "
         public MainForm()
         {
             InitializeComponent();
@@ -94,6 +98,7 @@ namespace AnnuaireEntreprise_2019
 
             this.BindGridAndFilter();
         }
+        #endregion
 
         #region " Connexion "
         /// <summary>
