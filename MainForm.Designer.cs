@@ -241,7 +241,7 @@ namespace AnnuaireEntreprise_2019
             // button_ReinitialiserFiltre
             // 
             this.button_ReinitialiserFiltre.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_ReinitialiserFiltre.Location = new System.Drawing.Point(3, 269);
+            this.button_ReinitialiserFiltre.Location = new System.Drawing.Point(3, 507);
             this.button_ReinitialiserFiltre.Name = "button_ReinitialiserFiltre";
             this.button_ReinitialiserFiltre.Size = new System.Drawing.Size(169, 23);
             this.button_ReinitialiserFiltre.TabIndex = 6;
@@ -255,9 +255,9 @@ namespace AnnuaireEntreprise_2019
             this.checkedListBox_Service.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkedListBox_Service.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkedListBox_Service.FormattingEnabled = true;
-            this.checkedListBox_Service.Location = new System.Drawing.Point(3, 180);
+            this.checkedListBox_Service.Location = new System.Drawing.Point(3, 299);
             this.checkedListBox_Service.Name = "checkedListBox_Service";
-            this.checkedListBox_Service.Size = new System.Drawing.Size(169, 89);
+            this.checkedListBox_Service.Size = new System.Drawing.Size(169, 208);
             this.checkedListBox_Service.TabIndex = 5;
             this.checkedListBox_Service.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox_ItemCheck);
             // 
@@ -266,7 +266,7 @@ namespace AnnuaireEntreprise_2019
             this.label_Service.AutoSize = true;
             this.label_Service.Dock = System.Windows.Forms.DockStyle.Top;
             this.label_Service.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Service.Location = new System.Drawing.Point(3, 163);
+            this.label_Service.Location = new System.Drawing.Point(3, 282);
             this.label_Service.Name = "label_Service";
             this.label_Service.Size = new System.Drawing.Size(55, 17);
             this.label_Service.TabIndex = 4;
@@ -280,7 +280,7 @@ namespace AnnuaireEntreprise_2019
             this.checkedListBox_Site.FormattingEnabled = true;
             this.checkedListBox_Site.Location = new System.Drawing.Point(3, 74);
             this.checkedListBox_Site.Name = "checkedListBox_Site";
-            this.checkedListBox_Site.Size = new System.Drawing.Size(169, 89);
+            this.checkedListBox_Site.Size = new System.Drawing.Size(169, 208);
             this.checkedListBox_Site.TabIndex = 3;
             this.checkedListBox_Site.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox_ItemCheck);
             // 
