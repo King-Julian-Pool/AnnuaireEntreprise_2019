@@ -344,6 +344,14 @@ namespace AnnuaireEntreprise_2019
                 {
                     if (this._salarie != null && this.DetailFormControls != null)
                     {
+                        string nom = null;
+                        string prenom = null;
+                        string telephoneFixe = null;
+                        string telephonePortable = null;
+                        string email = null;
+                        Site site = null;
+                        Service service = null;
+
                         foreach (Control control in this.DetailFormControls)
                         {
                             if (control?.Tag != null && this._salarie != null)
@@ -353,19 +361,19 @@ namespace AnnuaireEntreprise_2019
                                 switch (tag)
                                 {
                                     case nameof(Salarie.Nom):
-                                        this._salarie.Nom = control.Text;
+                                        nom = control.Text;
                                         break;
                                     case nameof(Salarie.Prenom):
-                                        this._salarie.Prenom = control.Text;
+                                        prenom = control.Text;
                                         break;
                                     case nameof(Salarie.TelephoneFixe):
-                                        this._salarie.TelephoneFixe = control.Text;
+                                        telephoneFixe = control.Text;
                                         break;
                                     case nameof(Salarie.TelephonePortable):
-                                        this._salarie.TelephonePortable = control.Text;
+                                        telephonePortable = control.Text;
                                         break;
                                     case nameof(Salarie.Email):
-                                        this._salarie.Email = control.Text;
+                                        email = control.Text;
                                         break;
                                     case nameof(Salarie.Site):
                                         ComboBox comboBoxSite = (ComboBox)control;
@@ -378,14 +386,14 @@ namespace AnnuaireEntreprise_2019
 
                                             if (SiteOid != null && SiteOid > 0)
                                             {
-                                                this._salarie.Site = this.Sites.FirstOrDefault(s => s.Oid == SiteOid);
+                                                site = this.Sites.FirstOrDefault(s => s.Oid == SiteOid);
                                                 siteExist = true;
                                             }
                                         }
 
                                         if (!siteExist)
                                         {
-                                            this._salarie.Site = null;
+                                            site = null;
                                         }
 
                                         break;
@@ -400,20 +408,30 @@ namespace AnnuaireEntreprise_2019
 
                                             if (ServiceOid != null && ServiceOid > 0)
                                             {
-                                                this._salarie.Service = this.Services.FirstOrDefault(s => s.Oid == ServiceOid);
+                                                service = this.Services.FirstOrDefault(s => s.Oid == ServiceOid);
                                                 serviceExist = true;
                                             }
                                         }
 
                                         if (!serviceExist)
                                         {
-                                            this._salarie.Service = null;
+                                            service = null;
                                         }
 
                                         break;
                                 }
+
                             }
                         }
+
+                        this._salarie.Nom = nom;
+                        this._salarie.Prenom = prenom;
+                        this._salarie.TelephoneFixe = telephoneFixe;
+                        this._salarie.TelephonePortable = telephonePortable;
+                        this._salarie.Email = email;
+                        this._salarie.Site = site;
+                        this._salarie.Service = service;
+
                         this._salarie.Save();
                     }
                 }
