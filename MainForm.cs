@@ -358,9 +358,24 @@ namespace AnnuaireEntreprise_2019
                         string email = null;
                         Site site = null;
                         Service service = null;
-
+                        
+                        bool valid = true;
+                        string invalidControls = null;
                         foreach (Control control in this.DetailFormControls)
                         {
+                            if (control.Text.Length > 100)
+                            {
+                                valid = false;
+                                if (invalidControls == string.Empty)
+                                {
+                                invalidControls += control.Tag;
+                                }
+                                else
+                                {
+                                    invalidControls += $", {control.Tag}";
+                                }
+                            }
+
                             if (control?.Tag != null && this._salarie != null)
                             {
                                 string tag = (string)control.Tag;
@@ -431,22 +446,41 @@ namespace AnnuaireEntreprise_2019
                             }
                         }
 
-                        this._salarie.Nom = nom;
-                        this._salarie.Prenom = prenom;
-                        this._salarie.TelephoneFixe = telephoneFixe;
-                        this._salarie.TelephonePortable = telephonePortable;
-                        this._salarie.Email = email;
-                        this._salarie.Site = site;
-                        this._salarie.Service = service;
+                        //bool valid = true;
+                        //foreach(string propertyString in new string[]{ nom,prenom, telephoneFixe, telephonePortable, email })
+                        //{
+                        //    if(propertyString.Length > 100)
+                        //    {
+                        //        valid = false;
+                        //    }
+                        //}
 
-                        this._salarie.Save();
+                        if (valid)
+                        {
+                            this._salarie.Nom = nom;
+                            this._salarie.Prenom = prenom;
+                            this._salarie.TelephoneFixe = telephoneFixe;
+                            this._salarie.TelephonePortable = telephonePortable;
+                            this._salarie.Email = email;
+                            this._salarie.Site = site;
+                            this._salarie.Service = service;
+
+                            this._salarie.Save();
+
+                            // On bind le formulaire avec les nouvelles informations
+                            this.ResetSalarie();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Les champs {invalidControls} ne doivent pas dépasser 100 caractères", "Erreur");
+                        }
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Annulation des modifications en cours pour le salarié sélectionné dans la grille
+        /// Vide les informations du formulaire et les remplace par celle du salarié sélectionné dans la grille
         /// </summary>
         private void ResetSalarie()
         {
